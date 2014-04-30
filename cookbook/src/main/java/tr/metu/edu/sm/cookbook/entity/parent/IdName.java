@@ -2,6 +2,8 @@ package tr.metu.edu.sm.cookbook.entity.parent;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -9,6 +11,7 @@ import javax.persistence.MappedSuperclass;
 public abstract class IdName {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Basic(optional = false)
 	@Column(name = "id")
 	protected Integer id;

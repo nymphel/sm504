@@ -3,6 +3,7 @@ package tr.metu.edu.sm.cookbook.test.unit;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import tr.metu.edu.sm.cookbook.entity.Category;
-import tr.metu.edu.sm.cookbook.entity.parent.IdName;
 import tr.metu.edu.sm.cookbook.service.CategoryService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,17 +24,33 @@ public class CategoryTest {
 
 	@Test
 	public void test() {
-		IdName category = new Category();
-		category.setName("new cat");
-
-		logger.info("created");
 		
-		List<Category> categories = categoryService.getAll();
-		if(categories !=null && !categories.isEmpty()) {
-			for (Category cat : categories) {
-				System.out.println(cat.getName());
+		List<Category> list = list();
+		
+		int size = list.size();
+		logger.info("before size: "+size);
+		
+		Category category = new Category();
+		category.setName("new");
+		categoryService.create(category);
+		
+		list = list();
+		int sizeA = list.size();
+		logger.info("after size: "+sizeA);
+		
+		Assert.assertEquals(1, sizeA - size);
+		
+		
+	}
+
+	private List<Category> list() {
+		List<Category> list = categoryService.getAll();
+		if(list !=null && !list.isEmpty()) {
+			for (Category l : list) {
+				System.out.println(l.getName());
 			}
 		}
+		return list;
 	}
 	
 	

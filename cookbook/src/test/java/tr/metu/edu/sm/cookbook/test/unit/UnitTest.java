@@ -10,29 +10,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import tr.metu.edu.sm.cookbook.entity.Cuisine;
-import tr.metu.edu.sm.cookbook.service.CuisineService;
+import tr.metu.edu.sm.cookbook.entity.Unit;
+import tr.metu.edu.sm.cookbook.service.UnitService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:applicationContext.xml"})
-public class CuisineTest {
+public class UnitTest {
 	
-	private static Logger logger = Logger.getLogger(CuisineTest.class);
+	private static Logger logger = Logger.getLogger(UnitTest.class);
 
 	@Autowired
-	private CuisineService<Cuisine, Integer> cuisineService;
+	private UnitService<Unit, Integer> unitService;
 
 	@Test
 	public void test() {
 		
-		List<Cuisine> list = list();
+		List<Unit> list = list();
 		
 		int size = list.size();
 		logger.info("before size: "+size);
 		
-		Cuisine cuisine = new Cuisine();
-		cuisine.setName("new");
-		cuisineService.create(cuisine);
+		Unit unit = new Unit();
+		unit.setName("new");
+		unitService.create(unit);
 		
 		list = list();
 		int sizeA = list.size();
@@ -43,10 +43,10 @@ public class CuisineTest {
 		
 	}
 
-	private List<Cuisine> list() {
-		List<Cuisine> list = cuisineService.getAll();
+	private List<Unit> list() {
+		List<Unit> list = unitService.getAll();
 		if(list !=null && !list.isEmpty()) {
-			for (Cuisine l : list) {
+			for (Unit l : list) {
 				System.out.println(l.getName());
 			}
 		}

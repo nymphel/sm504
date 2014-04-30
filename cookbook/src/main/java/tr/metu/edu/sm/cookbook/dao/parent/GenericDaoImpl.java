@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,14 +24,17 @@ public abstract class GenericDaoImpl<E,K> implements GenericDao<E, K> {
 		this.entityClass = (Class<?>) genericSuperclass.getActualTypeArguments()[0];
 	}
 
+	@Transactional
 	public void persist(E entity) {
 		entityManager.persist(entity);
 	}
 
+	@Transactional
 	public void remove(E entity) {
 		entityManager.remove(entity);
 	}
 	
+	@Transactional
 	public void merge(E entity) {
 		entityManager.merge(entity);
 	}
