@@ -32,7 +32,7 @@ public class LoginBean implements Serializable {
 	private String displayName;
 
 	@Autowired
-	private UserService userService;
+	private UserService<User, Integer> userService;
 
 	public String getEmail() {
 		return email;
@@ -51,7 +51,7 @@ public class LoginBean implements Serializable {
 	}
 
 	public String login() {
-		User user = userService.login(email, GenericUtil.decode(password));
+		User user = userService.getUserByEmailAndPassword(email, GenericUtil.decode(password));
 		logger.info("user with email: "+email + " is attempting to login.");
 		
 		if (user != null) {

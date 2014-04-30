@@ -5,5 +5,5 @@ import tr.metu.edu.sm.cookbook.entity.User;
 
 public interface UserDao extends GenericDao<User, Integer> {
 	
-	User login(String email, String password);
+	User getUserByEmailAndPassword(String email, String password);
 }

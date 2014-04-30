@@ -1,12 +1,10 @@
 package tr.metu.edu.sm.cookbook.service;
 
 import tr.metu.edu.sm.cookbook.entity.User;
+import tr.metu.edu.sm.cookbook.service.parent.GenericService;
 
-public interface UserService {
+public interface UserService<E, K> extends GenericService<E, K> {
 
-	User login(String email, String password);
-	void register(User user);
-	User getUserByUsername(String username);
-	void updateUser(User user);
+	User getUserByEmailAndPassword(String email, String password);
 
 }

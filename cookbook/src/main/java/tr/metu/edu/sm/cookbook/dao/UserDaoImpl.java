@@ -21,7 +21,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer>
 	private static final long serialVersionUID = 9147308305954986944L;
 
 	@Override
-	public User login(String email, String password) {
+	public User getUserByEmailAndPassword(String email, String password) {
 		
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 		
