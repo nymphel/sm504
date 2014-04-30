@@ -1,0 +1,58 @@
+@CHARSET "UTF-8";
+
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 15px;
+}
+
+.ui-widget {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+}
+
+.ui-widget .ui-widget {
+	font-size: 12px;
+}
+
+.ui-selectonemenu-trigger {
+	width: 24px !important;
+}
+
+.white-border tbody tr {
+	border-color:white;
+}
+
+.ui-state-error {
+	border-color: #B94A48 !important;
+}
+
+.ui-growl {
+    top:54px !important;
+    z-index:9999 !important;
+}
+
+.grayed-out-list li {
+	font-size: x-small;
+	color: #AAA;
+}
+
+.filterLeftCol {
+	width: 150px;
+}
+
+.filterRightCol {
+	width: 400px;
+}
+
+.readyToGo  a, a:link, a:visited {
+	color: #38A8F2;
+	font-weight: bold;
+}
+
+.welcome {
+	float:right; 
+	color:#999999;
+	font-size: 12px;
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  
+  		<persistence-unit name="cookboook_pu" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>tr.metu.edu.sm.cookbook.entity.User</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Rating</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Recipe</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Recipeingredient</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Ingredient</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Ingredientform</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Unit</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Cookingmethod</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Cuisine</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Category</class>
+		<class>tr.metu.edu.sm.cookbook.entity.Comment</class>
+		
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.generate_statistics" value="false" />
+			<property name="hibernate.use_sql_comments" value="false" />
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
