@@ -1,117 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.5" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <interface id="1" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericService" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericService.java" binary="false" 
+  <interface id="1" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericService" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="153" width="180" x="323" y="266"/>    
+    <position height="153" width="180" x="551" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="2" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericServiceImpl" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericServiceImpl.java" binary="false" 
+  <class id="2" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericServiceImpl" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="189" width="180" x="323" y="37"/>    
+    <position height="189" width="180" x="416" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="3" language="java" name="tr.metu.edu.sm.cookbook.service.CategoryService" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/CategoryService.java" binary="false" 
+  <interface id="3" language="java" name="tr.metu.edu.sm.cookbook.service.UserService" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/UserService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="63" width="151" x="433" y="477"/>    
+    <position height="135" width="188" x="1048" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="4" language="java" name="tr.metu.edu.sm.cookbook.service.RecipeServiceImpl" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/RecipeServiceImpl.java" binary="false" 
+  <class id="4" language="java" name="tr.metu.edu.sm.cookbook.service.CuisineServiceImpl" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/CuisineServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="171" width="237" x="46" y="266"/>    
+    <position height="117" width="211" x="300" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="tr.metu.edu.sm.cookbook.service.UserServiceImpl" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/UserServiceImpl.java" binary="false" 
+  <interface id="5" language="java" name="tr.metu.edu.sm.cookbook.service.RecipeService" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/RecipeService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="189" width="188" x="802" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="6" language="java" name="tr.metu.edu.sm.cookbook.service.RecipeService" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/RecipeService.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="117" width="210" x="183" y="477"/>    
+    <position height="117" width="210" x="661" y="477"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="7" language="java" name="tr.metu.edu.sm.cookbook.service.UserService" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/UserService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="188" x="802" y="266"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="8" language="java" name="tr.metu.edu.sm.cookbook.service.CategoryServiceImpl" project="cookbook" 
-    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/CategoryServiceImpl.java" binary="false" 
+  <class id="6" language="java" name="tr.metu.edu.sm.cookbook.service.CategoryServiceImpl" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/CategoryServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="117" width="219" x="543" y="266"/>    
+    <position height="117" width="219" x="41" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="9">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <realization id="10">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
+  <class id="7" language="java" name="tr.metu.edu.sm.cookbook.service.UserServiceImpl" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/UserServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="188" x="1048" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="tr.metu.edu.sm.cookbook.service.CuisineService" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/CuisineService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="63" width="151" x="456" y="477"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="9" language="java" name="tr.metu.edu.sm.cookbook.service.CategoryService" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/CategoryService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="63" width="151" x="265" y="477"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="tr.metu.edu.sm.cookbook.service.RecipeServiceImpl" project="cookboook" 
+    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/RecipeServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="237" x="771" y="266"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <generalization id="11">    
-    <end type="SOURCE" refId="6"/>    
+    <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="12">    
-    <end type="SOURCE" refId="8"/>    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="2"/>  
   </generalization>  
-  <realization id="13">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <realization id="14">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="3"/>    
+  <generalization id="13">    
+    <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <realization id="16">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
+  <realization id="14">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
   </realization>  
+  <realization id="15">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="16">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="17">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <realization id="18">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="20">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
