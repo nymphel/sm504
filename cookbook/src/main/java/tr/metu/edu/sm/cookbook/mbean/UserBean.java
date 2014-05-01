@@ -81,6 +81,14 @@ public class UserBean implements Serializable {
 		
 		return "login";
 	}
+	
+	public void register() {
+		
+	}
+	
+	public void update() {
+		
+	}
 
 	public String getDisplayName() {
 		return displayName;
