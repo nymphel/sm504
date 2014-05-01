@@ -2,6 +2,8 @@ package tr.metu.edu.sm.cookbook.test.unit;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,6 +17,7 @@ import tr.metu.edu.sm.cookbook.service.UnitService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:applicationContext.xml"})
+@Transactional
 public class UnitTest {
 	
 	private static Logger logger = Logger.getLogger(UnitTest.class);

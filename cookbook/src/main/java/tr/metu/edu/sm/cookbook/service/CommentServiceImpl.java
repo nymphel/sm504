@@ -8,7 +8,7 @@ import tr.metu.edu.sm.cookbook.dao.parent.GenericDao;
 import tr.metu.edu.sm.cookbook.entity.Comment;
 import tr.metu.edu.sm.cookbook.service.parent.GenericServiceImpl;
 
-@Service(value = "ratingService")
+@Service(value = "commentService")
 public class CommentServiceImpl extends
 		GenericServiceImpl<Comment, Integer> implements
 		CommentService<Comment, Integer> {
