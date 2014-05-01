@@ -2,16 +2,21 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Category;
+import tr.metu.edu.sm.cookbook.service.CategoryService;
 
 @Component
 @Qualifier("categoryBean")
 @Scope("session")
 public class CategoryBean {
+	
+	@Autowired
+	private CategoryService<Category, Integer> service;
 
 	private Category category;
 

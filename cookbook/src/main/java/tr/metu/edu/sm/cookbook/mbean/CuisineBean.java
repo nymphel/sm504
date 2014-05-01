@@ -2,16 +2,21 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Cuisine;
+import tr.metu.edu.sm.cookbook.service.CuisineService;
 
 @Component
 @Qualifier("cuisineBean")
 @Scope("session")
 public class CuisineBean {
+	
+	@Autowired
+	private CuisineService<Cuisine, Integer> service;
 
 	private Cuisine cuisine;
 

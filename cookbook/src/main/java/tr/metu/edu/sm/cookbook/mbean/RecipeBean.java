@@ -2,16 +2,31 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import tr.metu.edu.sm.cookbook.entity.Comment;
+import tr.metu.edu.sm.cookbook.entity.Rating;
 import tr.metu.edu.sm.cookbook.entity.Recipe;
+import tr.metu.edu.sm.cookbook.service.CommentService;
+import tr.metu.edu.sm.cookbook.service.RatingService;
+import tr.metu.edu.sm.cookbook.service.RecipeService;
 
 @Component
 @Qualifier("recipeBean")
 @Scope("session")
 public class RecipeBean {
+	
+	@Autowired
+	private RecipeService<Recipe, Integer> service;
+	
+	@Autowired
+	private RatingService<Rating, Integer> serviceRating;
+	
+	@Autowired
+	private CommentService<Comment, Integer> serviceComment;
 
 	private Recipe recipe;
 

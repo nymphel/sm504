@@ -25,14 +25,14 @@ public class UserBean implements Serializable {
 	private static Logger logger = Logger.getLogger(UserBean.class);
 
 	private static final long serialVersionUID = 1L;
+	
+	@Autowired
+	private UserService<User, Integer> userService;
 
 	private String email;
 	private String password;
 	
 	private String displayName;
-
-	@Autowired
-	private UserService<User, Integer> userService;
 
 	public String getEmail() {
 		return email;
