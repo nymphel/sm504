@@ -17,17 +17,17 @@
 					<f:facet name="header">#{msg.login}</f:facet>
 
 					<h:outputText value="#{msg.email}" />
-					<p:inputText id="email" value="#{loginBean.email}" maxlength="100" validatorMessage="#{msg.invalidEmail}" 
+					<p:inputText id="email" value="#{userBean.email}" maxlength="100" validatorMessage="#{msg.invalidEmail}" 
 						required="true" requiredMessage="#{msg.emailRequired}">
 						<f:validateRegex pattern="[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}" />
 					</p:inputText>
 
 					<h:outputText value="#{msg.password}" />
-					<p:password id="password" value="#{loginBean.password}"
+					<p:password id="password" value="#{userBean.password}"
 						feedback="false" maxlength="100" required="true" requiredMessage="#{msg.passwordRequired}" />	
 
 					<p:spacer />
-					<p:commandButton action="#{loginBean.login}" value="#{msg.login}"
+					<p:commandButton action="#{userBean.login}" value="#{msg.login}"
 						update="loginForm" ajax="false" process="@this" />
 
 				</p:panelGrid>

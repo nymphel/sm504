@@ -18,11 +18,11 @@ import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
 
 @Component
-@Qualifier("loginBean")
+@Qualifier("userBean")
 @Scope("session")
-public class LoginBean implements Serializable {
+public class UserBean implements Serializable {
 	
-	private static Logger logger = Logger.getLogger(LoginBean.class);
+	private static Logger logger = Logger.getLogger(UserBean.class);
 
 	private static final long serialVersionUID = 1L;
 
