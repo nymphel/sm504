@@ -26,4 +26,10 @@ public class UserServiceImpl extends
 		return dao.getUserByEmailAndPassword(email, password);
 	}
 
+	@Override
+	public boolean findUsersWithEmailOrUsername(String email, String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

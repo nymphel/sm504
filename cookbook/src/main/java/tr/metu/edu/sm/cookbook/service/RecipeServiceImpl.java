@@ -31,7 +31,7 @@ public class RecipeServiceImpl extends
 	}
 
 	@Override
-	public Recipe getRecipeByStatus(String status) {
+	public List<Recipe> getRecipesByStatus(String status) {
 		// TODO Auto-generated method stub
 		return null;
 	}

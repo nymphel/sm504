@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Comment;
+import tr.metu.edu.sm.cookbook.entity.Ingredient;
 import tr.metu.edu.sm.cookbook.entity.Rating;
 import tr.metu.edu.sm.cookbook.entity.Recipe;
 import tr.metu.edu.sm.cookbook.service.CommentService;
+import tr.metu.edu.sm.cookbook.service.IngredientService;
 import tr.metu.edu.sm.cookbook.service.RatingService;
 import tr.metu.edu.sm.cookbook.service.RecipeService;
 
@@ -27,6 +29,9 @@ public class RecipeBean {
 	
 	@Autowired
 	private CommentService<Comment, Integer> serviceComment;
+	
+	@Autowired
+	private IngredientService<Ingredient, Integer> serviceIngredient;
 
 	private Recipe recipe;
 

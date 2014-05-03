@@ -39,6 +39,10 @@ public class IngredientBean {
 	public List<Ingredient> getAll() {
 		return null;
 	}
+	
+	public boolean isIngredientNameInUse() {
+		return false;
+	}
 
 	public Ingredient getIngredient() {
 		return ingredient;

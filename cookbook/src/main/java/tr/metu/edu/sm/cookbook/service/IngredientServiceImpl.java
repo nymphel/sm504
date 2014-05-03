@@ -1,5 +1,7 @@
 package tr.metu.edu.sm.cookbook.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,18 @@ public class IngredientServiceImpl extends
 	@Override
 	public GenericDao<Ingredient, Integer> getDao() {
 		return this.dao;
+	}
+
+	@Override
+	public boolean findIngredientWithName(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Ingredient> searchIngredients(String keyword) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

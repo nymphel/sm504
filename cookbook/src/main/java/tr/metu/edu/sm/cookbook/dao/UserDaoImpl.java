@@ -48,4 +48,10 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer>
 		return null;
 	}
 
+	@Override
+	public boolean findUsersWithEmailOrUsername(String email, String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

@@ -89,7 +89,11 @@ public class UserBean implements Serializable {
 	public void update() {
 		
 	}
-
+	
+	public boolean isUniqueEmailAndUsername() {
+		return false;
+	}
+	
 	public String getDisplayName() {
 		return displayName;
 	}

@@ -8,6 +8,6 @@ import tr.metu.edu.sm.cookbook.service.parent.GenericService;
 public interface RecipeService<E, K> extends GenericService<E, K> {
 
 	List<Recipe> searchRecipes(E e);
-	Recipe getRecipeByStatus(String status);
+	List<Recipe> getRecipesByStatus(String status);
 
 }
