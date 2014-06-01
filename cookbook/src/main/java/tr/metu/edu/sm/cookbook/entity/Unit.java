@@ -29,9 +29,9 @@ import tr.metu.edu.sm.cookbook.entity.parent.IdName;
 public class Unit extends IdName implements Serializable {
     private static final long serialVersionUID = 1L;
    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "unit")
     private List<Recipeingredient> recipeingredientList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "calorieUnit")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "calorieUnit")
     private List<Ingredient> ingredientList;
 
     public List<Recipeingredient> getRecipeingredientList() {

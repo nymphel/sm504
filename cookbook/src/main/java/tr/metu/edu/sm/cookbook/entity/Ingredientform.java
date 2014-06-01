@@ -29,7 +29,7 @@ import tr.metu.edu.sm.cookbook.entity.parent.IdName;
 public class Ingredientform extends IdName implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredientForm")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "ingredientForm")
     private List<Recipeingredient> recipeingredientList;
 
     public List<Recipeingredient> getRecipeingredientList() {

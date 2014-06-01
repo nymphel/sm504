@@ -29,7 +29,7 @@ import tr.metu.edu.sm.cookbook.entity.parent.IdName;
 public class Category extends IdName implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "category")
     private List<Recipe> recipeList;
 
 

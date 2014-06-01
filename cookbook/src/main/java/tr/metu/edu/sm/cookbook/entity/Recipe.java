@@ -76,11 +76,11 @@ public class Recipe implements Serializable {
     @JoinColumn(name = "cuisine", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cuisine cuisine;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
     private List<Recipeingredient> recipeingredientList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
     private List<Rating> ratingList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
     private List<Comment> commentList;
 
     public Recipe() {

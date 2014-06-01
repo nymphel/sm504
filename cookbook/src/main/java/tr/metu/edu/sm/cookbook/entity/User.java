@@ -45,11 +45,11 @@ public class User implements Serializable {
     @Column(name = "surname")
     private String surname;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
     private List<Recipe> recipeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
     private List<Rating> ratingList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "userId")
     private List<Comment> commentList;
 
     public User() {

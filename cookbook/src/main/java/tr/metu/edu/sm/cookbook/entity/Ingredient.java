@@ -42,7 +42,7 @@ public class Ingredient implements Serializable {
     private double calorie;
     @Column(name = "allergenic")
     private String allergenic;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredient")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "ingredient")
     private List<Recipeingredient> recipeingredientList;
     @JoinColumn(name = "calorieUnit", referencedColumnName = "id")
     @ManyToOne(optional = false)
