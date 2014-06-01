@@ -14,8 +14,8 @@ public abstract class GenericServiceImpl<E, K> implements GenericService<E, K> {
 		getDao().merge(e);
 	}
 
-	public void delete(E e) {
-		getDao().remove(e);
+	public void delete(K k) {
+		getDao().remove(k);
 	}
 
 	public E getById(K k) {

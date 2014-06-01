@@ -15,7 +15,7 @@ import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 @Qualifier("categoryBean")
 @Scope("session")
 public class CategoryBean {
-	
+
 	@Autowired
 	private CategoryService<Category, Integer> service;
 
@@ -23,25 +23,43 @@ public class CategoryBean {
 
 	public void create() {
 		service.create(category);
-		MessagesUtil.setGlobalInfoMessage(MessagesUtil.getValue("createCategorySuccessful"));
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil
+				.getValue("createCategorySuccessful"));
 		category = new Category();
 
 	}
 
 	public void update() {
-
+		service.update(category);
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil
+				.getValue("updateCategorySuccessful"));
 	}
 
 	public void delete() {
+		try {
+			service.delete(category.getId());
+			MessagesUtil.setGlobalInfoMessage(MessagesUtil
+					.getValue("deleteCategorySuccessful"));
+			category = new Category();
+		} catch (Exception e) {
+			MessagesUtil.setGlobalErrorMessage(MessagesUtil
+					.getValue("categoryInUse"));
+			e.printStackTrace();
+		}
 
 	}
-	
+
 	public Category getById(Integer id) {
-		return null;
+		return service.getById(id);
 	}
 
 	public List<Category> getAll() {
-		return null;
+		List<Category> all = service.getAll();
+		if (category != null && category.getId() == null && all != null
+				&& !all.isEmpty()) {
+			category = all.get(0);
+		}
+		return all;
 	}
 
 	public Category getCategory() {
@@ -50,5 +68,12 @@ public class CategoryBean {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public void select() {
+		Integer selectedId = this.category.getId();
+		if (selectedId != null && selectedId != 0) {
+			this.category = getById(selectedId);
+		}
 	}
 }

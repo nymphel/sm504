@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Welcome to CookBook</title>
+</h:head>
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="content">
+			<h:form id="categoryForm">
+				<p:panelGrid>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="2">#{msg.manageCategory}</p:column>
+						</p:row>
+					</f:facet>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="#{msg.categoryList}" />
+						</p:column>
+						<p:column>
+							<p:selectOneListbox value="#{categoryBean.category.id}"
+								style="width:180px">
+								<f:selectItems value="#{categoryBean.all}" var="category"
+									itemLabel="#{category.name}" itemValue="#{category.id}" />
+								<p:ajax event="change" execute="@this" update="categoryName" listener="#{categoryBean.select}"/>
+							</p:selectOneListbox>
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="#{msg.categoryName} *" />
+						</p:column>
+						<p:column>
+							<p:inputText id="categoryName" styleClass="inputCommon"
+								required="true" requiredMessage="#{msg.required}"
+								value="#{categoryBean.category.name}" autocomplete="false">
+								<f:validateLength minimum="2" maximum="15" />
+							</p:inputText>
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column>
+
+							</p:column>
+							<p:column>
+								<p:commandButton value="#{msg.update}"
+									action="#{categoryBean.update}" process="@all"
+									update="categoryForm" />
+								<p:commandButton value="#{msg.delete}"
+									action="#{categoryBean.delete}" process="@all"
+									update="categoryForm" />	
+								<p:commandButton value="#{msg.cancel}" action="index"
+									ajax="false" />
+							</p:column>
+						</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
