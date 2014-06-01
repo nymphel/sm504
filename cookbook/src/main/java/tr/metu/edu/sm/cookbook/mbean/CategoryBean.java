@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Category;
 import tr.metu.edu.sm.cookbook.service.CategoryService;
+import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
 @Component
 @Qualifier("categoryBean")
@@ -18,9 +19,12 @@ public class CategoryBean {
 	@Autowired
 	private CategoryService<Category, Integer> service;
 
-	private Category category;
+	private Category category = new Category();
 
 	public void create() {
+		service.create(category);
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil.getValue("createCategorySuccessful"));
+		category = new Category();
 
 	}
 
