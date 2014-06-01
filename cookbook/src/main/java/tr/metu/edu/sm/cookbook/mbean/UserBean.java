@@ -104,9 +104,9 @@ public class UserBean implements Serializable {
 	
 	public boolean isUniqueEmailAndUsername() 
 	{
-		if(userService.getUserByEmailAndPassword(user.getEmail(), user.getPassword()) != null)
-			return true;
-		return false;
+		if(userService.findUsersWithEmailOrUsername(user.getEmail(), user.getPassword()))
+			return false;
+		return true;
 	}
 	
 	public String getDisplayName() {
