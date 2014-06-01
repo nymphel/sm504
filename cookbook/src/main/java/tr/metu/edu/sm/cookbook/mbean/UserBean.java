@@ -28,6 +28,8 @@ public class UserBean implements Serializable {
 	
 	@Autowired
 	private UserService<User, Integer> userService;
+	
+	private User user = new User();
 
 	private String email;
 	private String password;
@@ -82,15 +84,28 @@ public class UserBean implements Serializable {
 		return "login";
 	}
 	
-	public void register() {
+	public String register() 
+	{
+		if(!isUniqueEmailAndUsername())
+		{
+			MessagesUtil.setGlobalWarningMessage(MessagesUtil.getValue("invalidRegister"));
+			logger.info("User found with given credentials.");
+			return "";
+		}
 		
+		userService.create(user);
+		
+		return "login";
 	}
 	
 	public void update() {
 		
 	}
 	
-	public boolean isUniqueEmailAndUsername() {
+	public boolean isUniqueEmailAndUsername() 
+	{
+		if(userService.getUserByEmailAndPassword(user.getEmail(), user.getPassword()) != null)
+			return true;
 		return false;
 	}
 	
@@ -100,5 +115,13 @@ public class UserBean implements Serializable {
 
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

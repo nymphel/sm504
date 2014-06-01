@@ -36,7 +36,11 @@ public class AuthFilter implements Filter {
 			// allow user to proccede if url is login.xhtml or user logged in or
 			// user is accessing any page in //public folder
 			String reqURI = req.getRequestURI();
-			if (reqURI.indexOf("/pages/login.jsf") >= 0
+			if (reqURI.indexOf("/pages/register.jsf") >= 0)
+			{
+				chain.doFilter(request, response);
+			}
+			else if (reqURI.indexOf("/pages/login.jsf") >= 0
 					|| (ses != null && ses.getAttribute("email") != null)
 					|| reqURI.indexOf("/public/") >= 0
 					|| reqURI.contains("javax.faces.resource")) {

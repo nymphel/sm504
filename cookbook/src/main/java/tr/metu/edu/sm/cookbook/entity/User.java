@@ -40,6 +40,11 @@ public class User implements Serializable {
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "surname")
+    private String surname;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Recipe> recipeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
@@ -92,7 +97,23 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Recipe> getRecipeList() {
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public List<Recipe> getRecipeList() {
         return recipeList;
     }
 
