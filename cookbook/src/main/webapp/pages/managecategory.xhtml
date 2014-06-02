@@ -53,7 +53,7 @@
 								<p:commandButton value="#{msg.update}"
 									action="#{categoryBean.update}" process="@all"
 									update="categoryForm" />
-								<p:commandButton value="#{msg.delete}"
+								<p:commandButton value="#{msg.delete}" onclick="if (!confirm('${msg.areYouSure}')) { return false; }" 
 									action="#{categoryBean.delete}" process="@all"
 									update="categoryForm" />	
 								<p:commandButton value="#{msg.cancel}" action="index"
