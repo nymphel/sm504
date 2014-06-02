@@ -18,12 +18,12 @@
 
 					<h:outputText value="#{msg.email}" />
 					<p:inputText id="email" value="#{userBean.email}" maxlength="100" validatorMessage="#{msg.invalidEmail}" 
-						required="true" requiredMessage="#{msg.emailRequired}">
+						required="true" requiredMessage="#{msg.emailRequired}" styleClass="inputCommon">
 						<f:validateRegex pattern="[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}" />
 					</p:inputText>
 
 					<h:outputText value="#{msg.password}" />
-					<p:password id="password" value="#{userBean.password}"
+					<p:password id="password" value="#{userBean.password}" styleClass="inputCommon"
 						feedback="false" maxlength="100" required="true" requiredMessage="#{msg.passwordRequired}" />	
 
 					<p:spacer />
