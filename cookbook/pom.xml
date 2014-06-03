@@ -259,7 +259,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>cookboook</finalName>
+		<finalName>cookbook</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

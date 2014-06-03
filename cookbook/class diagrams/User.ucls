@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.5" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="true" nesting-relationships="true">  
-  <class id="1" language="java" name="tr.metu.edu.sm.cookbook.mbean.UserBean" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/mbean/UserBean.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="tr.metu.edu.sm.cookbook.mbean.UserBean" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/mbean/UserBean.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="369" width="209" x="41" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="2" language="java" name="tr.metu.edu.sm.cookbook.service.UserService" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/UserService.java" binary="false" 
+  <interface id="2" language="java" name="tr.metu.edu.sm.cookbook.service.UserService" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/UserService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="99" width="287" x="202" y="675"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -20,8 +20,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="3" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericService" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericService.java" binary="false" 
+  <interface id="3" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericService" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="153" width="180" x="290" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -30,8 +30,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="4" language="java" name="tr.metu.edu.sm.cookbook.dao.UserDao" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/dao/UserDao.java" binary="false" corner="BOTTOM_RIGHT">    
+  <interface id="4" language="java" name="tr.metu.edu.sm.cookbook.dao.UserDao" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/dao/UserDao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="287" x="510" y="868"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -39,8 +39,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="5" language="java" name="tr.metu.edu.sm.cookbook.dao.parent.GenericDao" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/dao/parent/GenericDao.java" binary="false" 
+  <interface id="5" language="java" name="tr.metu.edu.sm.cookbook.dao.parent.GenericDao" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/dao/parent/GenericDao.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="153" width="164" x="633" y="675"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -49,8 +49,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="6" language="java" name="tr.metu.edu.sm.cookbook.entity.User" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/entity/User.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="tr.metu.edu.sm.cookbook.entity.User" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/entity/User.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="567" width="206" x="837" y="868"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -58,8 +58,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="tr.metu.edu.sm.cookbook.dao.UserDaoImpl" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/dao/UserDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="tr.metu.edu.sm.cookbook.dao.UserDaoImpl" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/dao/UserDaoImpl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="287" x="837" y="675"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
@@ -67,8 +67,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="tr.metu.edu.sm.cookbook.dao.parent.GenericDaoImpl" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/dao/parent/GenericDaoImpl.java" binary="false" 
+  <class id="8" language="java" name="tr.metu.edu.sm.cookbook.dao.parent.GenericDaoImpl" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/dao/parent/GenericDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="207" width="168" x="858" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -77,8 +77,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericServiceImpl" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericServiceImpl.java" binary="false" 
+  <class id="9" language="java" name="tr.metu.edu.sm.cookbook.service.parent.GenericServiceImpl" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/parent/GenericServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="189" width="180" x="609" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
@@ -87,8 +87,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="tr.metu.edu.sm.cookbook.service.UserServiceImpl" project="cookboook" 
-    file="/cookboook/src/main/java/tr/metu/edu/sm/cookbook/service/UserServiceImpl.java" binary="false" 
+  <class id="10" language="java" name="tr.metu.edu.sm.cookbook.service.UserServiceImpl" project="cookbook" 
+    file="/cookbook/src/main/java/tr/metu/edu/sm/cookbook/service/UserServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="135" width="287" x="510" y="266"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 

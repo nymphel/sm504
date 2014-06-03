@@ -24,7 +24,7 @@
 						<p:column>
 							<p:inputText id="cookingMethodName" styleClass="inputCommon"
 								required="true" requiredMessage="#{msg.required}"
-								value="#{cookingMethodBean.cookingmethod.name}" autocomplete="false">
+								value="#{cookingmethodBean.cookingmethod.name}" autocomplete="false">
 								<f:validateLength minimum="2" maximum="15" />
 							</p:inputText>
 						</p:column>
@@ -37,7 +37,7 @@
 							</p:column>
 							<p:column>
 								<p:commandButton value="#{msg.create}"
-									action="#{cookingMethodBean.create}" process="@all"
+									action="#{cookingmethodBean.create}" process="@all"
 									update="cookingMethodForm" />
 								<p:commandButton value="#{msg.cancel}" action="index"
 									ajax="false" immediate="true" />
