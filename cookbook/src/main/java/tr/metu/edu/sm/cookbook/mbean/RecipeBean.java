@@ -80,6 +80,9 @@ public class RecipeBean {
 		HttpSession session = FacesUtil.getSession();
 		User user = (User) session.getAttribute("user");
 		recipe.setUserId(user);
+		
+		recipe.setCreatedDate("2014");
+		recipe.setStatus("requested");
 	}
 
 	public List<Recipe> getRecipeRequests() {
@@ -95,7 +98,8 @@ public class RecipeBean {
 	}
 
 	public void create() {
-		System.out.println(recipe);
+		service.create(recipe);
+		recipe = new Recipe();
 	}
 
 	public void update() {

@@ -35,13 +35,14 @@
 							<h:outputText value="Total Calorie" />
 						</p:column>
 					</p:row>
-					
+
 					<p:row>
 						<p:column>
 							<h:outputText value="Recipe Category *" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu value="#{recipeBean.recipe.category.id}" style="width:180px">
+							<p:selectOneMenu value="#{recipeBean.recipe.category.id}"
+								style="width:180px">
 								<f:selectItems value="#{categoryBean.all}" var="category"
 									itemLabel="#{category.name}" itemValue="#{category.id}" />
 							</p:selectOneMenu>
@@ -50,19 +51,22 @@
 							<h:outputText value="Cooking Method *" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu value="#{recipeBean.recipe.cookingmethod.id}" style="width:180px">
-								<f:selectItems value="#{cookingmethodBean.all}" var="cookingmethod"
-									itemLabel="#{cookingmethod.name}" itemValue="#{cookingmethod.id}" />
+							<p:selectOneMenu value="#{recipeBean.recipe.cookingMethod.id}"
+								style="width:180px">
+								<f:selectItems value="#{cookingmethodBean.all}"
+									var="cookingmethod" itemLabel="#{cookingmethod.name}"
+									itemValue="#{cookingmethod.id}" />
 							</p:selectOneMenu>
 						</p:column>
 					</p:row>
-					
+
 					<p:row>
 						<p:column>
 							<h:outputText value="Cuisine *" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu value="#{recipeBean.recipe.cuisine.id}" style="width:180px">
+							<p:selectOneMenu value="#{recipeBean.recipe.cuisine.id}"
+								style="width:180px">
 								<f:selectItems value="#{cuisineBean.all}" var="cuisine"
 									itemLabel="#{cuisine.name}" itemValue="#{cuisine.id}" />
 							</p:selectOneMenu>
@@ -71,9 +75,72 @@
 							<h:outputText value="Cooking Time *" />
 						</p:column>
 						<p:column>
-							
+							<p:inputMask mask="999" value="#{recipeBean.recipe.cookingTime}" required="true" />
 						</p:column>
 					</p:row>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="Difficulty Level" />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu value="#{recipeBean.recipe.difficulty}">
+								<f:selectItem itemLabel="Easy" itemValue="Easy"/>
+								<f:selectItem itemLabel="Medium" itemValue="Medium"/>
+								<f:selectItem itemLabel="Hard" itemValue="Hard"/>
+							</p:selectOneMenu>
+						</p:column>
+						<p:column rowspan="3">
+							<h:outputText value="Directives" />
+						</p:column>
+						<p:column rowspan="3">
+							<p:inputText value="#{recipeBean.recipe.directive}" required="true" />
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Serving Quantity" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{recipeBean.recipe.servingQty}" required="true" />
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Preparation Time" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{recipeBean.recipe.prepTime}" required="true" />
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column rowspan="2">
+							<h:outputText value="Ingredients" />
+						</p:column>
+						<p:column rowspan="2">
+							<h:outputText value="b" />
+						</p:column>
+						<p:column>
+							<h:outputText value="Tips" />
+						</p:column>
+						<p:column>
+							<h:outputText value="b" />
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Photo" />
+						</p:column>
+						<p:column>
+							<h:outputText value="b" />
+						</p:column>
+					</p:row>
+					
+					
 
 					<f:facet name="footer">
 						<p:row>
