@@ -37,7 +37,7 @@ public class UnitBean {
 	}
 
 	public List<Unit> getAll() {
-		return null;
+		return service.getAll();
 	}
 
 	public Unit getUnit() {
