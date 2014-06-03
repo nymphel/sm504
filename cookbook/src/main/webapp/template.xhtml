@@ -30,6 +30,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="inventory.jsf">#{msg.cookbook}</a></li>
+					<li> <h:outputLink value="createcookingmethods.jsf" name="#{msg.createCookingMethods}" immediate="true" ajax="false">#{msg.createCookingMethods}</h:outputLink></li>
 					<li> <p:commandLink action="#{userBean.logout}" value="#{msg.logout}" immediate="true" ajax="false"/></li>
 				</ul>
 				<div class="welcome"><br/>Welcome, #{userBean.displayName}</div>

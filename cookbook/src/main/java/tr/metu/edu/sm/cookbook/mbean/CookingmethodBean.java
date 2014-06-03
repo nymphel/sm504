@@ -20,8 +20,9 @@ public class CookingmethodBean {
 
 	private Cookingmethod cookingmethod;
 
-	public void create() {
-
+	public void create() 
+	{
+		service.create(cookingmethod);
 	}
 
 	public void update() {

@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Welcome to CookBook</title>
+</h:head>
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="content">
+			<h:form id="cookingMethodForm">
+				<p:panelGrid>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="2">#{msg.createCookingMethods}</p:column>
+						</p:row>
+					</f:facet>
+
+					<p:row>
+						<p:column>
+							<h:outputText value="#{msg.cookingMethodName} *" />
+						</p:column>
+						<p:column>
+							<p:inputText id="cookingMethodName" styleClass="inputCommon"
+								required="true" requiredMessage="#{msg.required}"
+								value="#{cookingMethodBean.cookingmethod.name}" autocomplete="false">
+								<f:validateLength minimum="2" maximum="15" />
+							</p:inputText>
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column>
+
+							</p:column>
+							<p:column>
+								<p:commandButton value="#{msg.create}"
+									action="#{cookingMethodBean.create}" process="@all"
+									update="cookingMethodForm" />
+								<p:commandButton value="#{msg.cancel}" action="index"
+									ajax="false" immediate="true" />
+							</p:column>
+						</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
