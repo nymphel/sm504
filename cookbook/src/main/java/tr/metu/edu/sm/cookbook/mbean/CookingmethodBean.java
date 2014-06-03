@@ -9,20 +9,24 @@ import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Cookingmethod;
 import tr.metu.edu.sm.cookbook.service.CookingmethodService;
+import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
 @Component
 @Qualifier("cookingmethodBean")
 @Scope("session")
 public class CookingmethodBean {
-	
+
 	@Autowired
 	private CookingmethodService<Cookingmethod, Integer> service;
 
-	private Cookingmethod cookingmethod;
+	private Cookingmethod cookingmethod = new Cookingmethod();
 
-	public void create() 
-	{
+	public void create() {
 		service.create(cookingmethod);
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil
+				.getValue("createCookingmethodSuccessful"));
+		cookingmethod = new Cookingmethod();
+
 	}
 
 	public void update() {
@@ -32,7 +36,7 @@ public class CookingmethodBean {
 	public void delete() {
 
 	}
-	
+
 	public Cookingmethod getById(Integer id) {
 		return null;
 	}

@@ -63,7 +63,7 @@ public class RecipeBean {
 	@Autowired 
 	private UnitService<Unit, Integer> serviceUnit;
 
-	private Recipe recipe;
+	private Recipe recipe = new Recipe();
 
 	public List<Recipe> getRecipeRequests() {
 		return null;

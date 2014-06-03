@@ -6,6 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-<% response.sendRedirect(request.getContextPath()+"/pages/inventory.jsf"); %>
+<% response.sendRedirect(request.getContextPath()+"/pages/index.jsf"); %>
 </body>
 </html>
