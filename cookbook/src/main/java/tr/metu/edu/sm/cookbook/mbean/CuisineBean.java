@@ -14,7 +14,7 @@ import tr.metu.edu.sm.cookbook.service.CuisineService;
 @Qualifier("cuisineBean")
 @Scope("session")
 public class CuisineBean {
-	
+
 	@Autowired
 	private CuisineService<Cuisine, Integer> service;
 
@@ -31,13 +31,13 @@ public class CuisineBean {
 	public void delete() {
 
 	}
-	
+
 	public Cuisine getById(Integer id) {
 		return null;
 	}
 
 	public List<Cuisine> getAll() {
-		return null;
+		return service.getAll();
 	}
 
 	public Cuisine getCuisine() {

@@ -19,17 +19,56 @@
 
 					<p:row>
 						<p:column>
-							<h:outputText value="#{msg.categoryName} *" />
+							<h:outputText value="Recipe Name *" />
 						</p:column>
 						<p:column>
-							<p:inputText id="categoryName" styleClass="inputCommon"
+							<p:inputText id="recipeName" styleClass="inputCommon"
 								required="true" requiredMessage="#{msg.required}"
-								value="#{categoryBean.category.name}" autocomplete="false">
+								value="#{recipeBean.recipe.name}" autocomplete="false">
 								<f:validateLength minimum="2" maximum="15" />
 							</p:inputText>
 						</p:column>
 						<p:column>
-							<h:outputText value="#{msg.categoryName} *" />
+							<h:outputText value="Total Calorie" />
+						</p:column>
+						<p:column>
+							<h:outputText value="Total Calorie" />
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Recipe Category *" />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu value="#{recipeBean.recipe.category.id}" style="width:180px">
+								<f:selectItems value="#{categoryBean.all}" var="category"
+									itemLabel="#{category.name}" itemValue="#{category.id}" />
+							</p:selectOneMenu>
+						</p:column>
+						<p:column>
+							<h:outputText value="Cooking Method *" />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu value="#{recipeBean.recipe.cookingmethod.id}" style="width:180px">
+								<f:selectItems value="#{cookingmethodBean.all}" var="cookingmethod"
+									itemLabel="#{cookingmethod.name}" itemValue="#{cookingmethod.id}" />
+							</p:selectOneMenu>
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Cuisine *" />
+						</p:column>
+						<p:column>
+							<p:selectOneMenu value="#{recipeBean.recipe.cuisine.id}" style="width:180px">
+								<f:selectItems value="#{cuisineBean.all}" var="cuisine"
+									itemLabel="#{cuisine.name}" itemValue="#{cuisine.id}" />
+							</p:selectOneMenu>
+						</p:column>
+						<p:column>
+							<h:outputText value="Cooking Time *" />
 						</p:column>
 						<p:column>
 							
@@ -43,7 +82,7 @@
 							</p:column>
 							<p:column>
 								<p:commandButton value="#{msg.create}"
-									action="#{categoryBean.create}" process="@all"
+									action="#{recipeBean.create}" process="@all"
 									update="categoryForm" />
 								<p:commandButton value="#{msg.cancel}" action="index"
 									ajax="false" />

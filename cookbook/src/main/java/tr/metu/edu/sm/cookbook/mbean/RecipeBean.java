@@ -2,6 +2,9 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -17,6 +20,7 @@ import tr.metu.edu.sm.cookbook.entity.Rating;
 import tr.metu.edu.sm.cookbook.entity.Recipe;
 import tr.metu.edu.sm.cookbook.entity.Recipeingredient;
 import tr.metu.edu.sm.cookbook.entity.Unit;
+import tr.metu.edu.sm.cookbook.entity.User;
 import tr.metu.edu.sm.cookbook.service.CategoryService;
 import tr.metu.edu.sm.cookbook.service.CommentService;
 import tr.metu.edu.sm.cookbook.service.CookingmethodService;
@@ -27,6 +31,7 @@ import tr.metu.edu.sm.cookbook.service.RatingService;
 import tr.metu.edu.sm.cookbook.service.RecipeService;
 import tr.metu.edu.sm.cookbook.service.RecipeingredientService;
 import tr.metu.edu.sm.cookbook.service.UnitService;
+import tr.metu.edu.sm.cookbook.util.FacesUtil;
 
 @Component
 @Qualifier("recipeBean")
@@ -63,7 +68,19 @@ public class RecipeBean {
 	@Autowired 
 	private UnitService<Unit, Integer> serviceUnit;
 
-	private Recipe recipe = new Recipe();
+	private Recipe recipe = null;
+	
+	@PostConstruct
+	private void init() {
+		recipe = new Recipe();
+		recipe.setCategory(new Category());
+		recipe.setCookingMethod(new Cookingmethod());
+		recipe.setCuisine(new Cuisine());
+		
+		HttpSession session = FacesUtil.getSession();
+		User user = (User) session.getAttribute("user");
+		recipe.setUserId(user);
+	}
 
 	public List<Recipe> getRecipeRequests() {
 		return null;
@@ -78,7 +95,7 @@ public class RecipeBean {
 	}
 
 	public void create() {
-
+		System.out.println(recipe);
 	}
 
 	public void update() {

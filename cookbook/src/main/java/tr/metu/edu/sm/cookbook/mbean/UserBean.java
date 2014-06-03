@@ -61,6 +61,7 @@ public class UserBean implements Serializable {
 			HttpSession session = FacesUtil.getSession();
 			session.setAttribute("email", user.getEmail());
 			session.setAttribute("id", user.getId());
+			session.setAttribute("user", user);
 			
 			this.displayName = user.getUsername();
 			

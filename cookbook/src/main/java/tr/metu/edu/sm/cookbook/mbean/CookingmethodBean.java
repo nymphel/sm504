@@ -42,7 +42,7 @@ public class CookingmethodBean {
 	}
 
 	public List<Cookingmethod> getAll() {
-		return null;
+		return service.getAll();
 	}
 
 	public Cookingmethod getCookingmethod() {
