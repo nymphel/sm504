@@ -21,7 +21,7 @@ public class CuisineBean {
 	private Cuisine cuisine;
 
 	public void create() {
-
+		service.create(cuisine);
 	}
 
 	public void update() {
