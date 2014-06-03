@@ -2,13 +2,17 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Ingredient;
+import tr.metu.edu.sm.cookbook.entity.Unit;
 import tr.metu.edu.sm.cookbook.service.IngredientService;
+import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
 @Component
 @Qualifier("ingredientBean")
@@ -18,10 +22,19 @@ public class IngredientBean {
 	@Autowired
 	private IngredientService<Ingredient, Integer> service;
 
-	private Ingredient ingredient;
+	private Ingredient ingredient = null;
+	
+	@PostConstruct
+	private void init() {
+		ingredient = new Ingredient();
+		ingredient.setCalorieUnit(new Unit());
+	}
 
 	public void create() {
-
+		service.create(ingredient);
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil
+				.getValue("createIngredientSuccessful"));
+		ingredient = new Ingredient();
 	}
 
 	public void update() {

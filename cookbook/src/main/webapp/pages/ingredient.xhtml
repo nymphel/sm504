@@ -13,13 +13,13 @@
 				<p:panelGrid>
 					<f:facet name="header">
 						<p:row>
-							<p:column colspan="2">#{msg.createCuisineTypes}</p:column>
+							<p:column colspan="3">#{msg.createCuisineTypes}</p:column>
 						</p:row>
 					</f:facet>
 
 					<p:row>
 						<p:column>
-							<h:outputText value="#{msg.ingredientName} *" />
+							<p:outputLabel value="#{msg.ingredientName} *" />
 						</p:column>
 						<p:column>
 							<p:inputText id="ingredientName" styleClass="inputCommon"
@@ -27,12 +27,31 @@
 								value="#{ingredientBean.ingredient.name}" autocomplete="false">
 								<f:validateLength minimum="2" maximum="15" />
 							</p:inputText>
+						</p:column>							
+						<p:column>
 							<p:selectBooleanCheckbox value="#{ingredientBean.ingredient.allergenic}" />
-							<h:outputText value="#{msg.ingredientAllergenic}" />
+							<p:outputLabel value="#{msg.ingredientAllergenic}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:outputLabel for="calorieUnit" value="#{msg.ingredientCalories}" />
 						</p:column>
 						<p:column>
-							<p:inputMask id="calories" styleClass="inputCommon" value="#{ingredientBean.ingredient.calorie}" mask="a*" autocomplete="false"/>
-							<h:outputText value="#{msg.ingredientCalSign}" />
+							<p:inputMask id="calories" styleClass="inputCommon" value="#{ingredientBean.ingredient.calorie}" mask="9*9*9*9*9*" autocomplete="false"/>
+						</p:column>
+						<p:column>
+							<p:outputLabel value="#{msg.ingredientCalSign}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:outputLabel for="calorieUnit" value="#{msg.ingredientCalorieUnit}" />
+						</p:column>
+						<p:column>
+        					<p:selectOneMenu id="calorieUnit" value="#{ingredientBean.ingredient.calorieUnit.id}">
+        						<f:selectItems value="#{unitBean.all}" var="unit" itemLabel="#{unit.name}" itemValue="#{unit.id}" />
+        					</p:selectOneMenu>
 						</p:column>
 					</p:row>
 
@@ -41,9 +60,9 @@
 							<p:column>
 
 							</p:column>
-							<p:column>
+							<p:column colspan="2">
 								<p:commandButton value="#{msg.create}"
-									action="#{cuisineBean.create}" process="@all"
+									action="#{ingredientBean.create}" process="@all"
 									update="createIngredientForm" />
 								<p:commandButton value="#{msg.cancel}" action="index"
 									ajax="false" immediate="true" />
