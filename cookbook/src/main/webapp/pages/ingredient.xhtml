@@ -38,7 +38,7 @@
 							<p:outputLabel for="calorieUnit" value="#{msg.ingredientCalories}" />
 						</p:column>
 						<p:column>
-							<p:inputMask id="calories" styleClass="inputCommon" value="#{ingredientBean.ingredient.calorie}" mask="9*9*9*9*9*" autocomplete="false"/>
+							<p:inputText id="calories" styleClass="inputCommon" value="#{ingredientBean.ingredient.calorie}" autocomplete="off"/>
 						</p:column>
 						<p:column>
 							<p:outputLabel value="#{msg.ingredientCalSign}" />

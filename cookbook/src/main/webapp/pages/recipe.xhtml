@@ -32,7 +32,7 @@
 
 					<p:row>
 						<p:column>
-							<h:outputText value="Recipe Category *" />
+							<h:outputText value="Recipe Category" />
 						</p:column>
 						<p:column>
 							<p:selectOneMenu value="#{recipeBean.recipe.category.id}"
@@ -45,7 +45,7 @@
 					
 					<p:row>
 						<p:column>
-							<h:outputText value="Cooking Method *" />
+							<h:outputText value="Cooking Method" />
 						</p:column>
 						<p:column>
 							<p:selectOneMenu value="#{recipeBean.recipe.cookingMethod.id}"
@@ -59,7 +59,7 @@
 
 					<p:row>
 						<p:column>
-							<h:outputText value="Cuisine *" />
+							<h:outputText value="Cuisine" />
 						</p:column>
 						<p:column>
 							<p:selectOneMenu value="#{recipeBean.recipe.cuisine.id}"
@@ -86,21 +86,13 @@
 					
 					<p:row>
 						<p:column>
-							<h:outputText value="Cooking Time *" />
+							<h:outputText value="Cooking Time" />
 						</p:column>
 						<p:column>
-							<p:inputMask mask="999" value="#{recipeBean.recipe.cookingTime}"
+							<p:inputText value="#{recipeBean.recipe.cookingTime}"
 								required="true" styleClass="inputCommon" />
-						</p:column>
-					</p:row>
-
-					<p:row>
-						<p:column>
-							<h:outputText value="Serving Quantity" />
-						</p:column>
-						<p:column>
-							<p:inputText value="#{recipeBean.recipe.servingQty}"
-								required="true" styleClass="inputCommon" />
+							<p:spacer width="3px" />
+							<h:outputText value="minutes"/>	
 						</p:column>
 					</p:row>
 
@@ -111,6 +103,18 @@
 						<p:column>
 							<p:inputText value="#{recipeBean.recipe.prepTime}"
 								required="true" styleClass="inputCommon" />
+							<p:spacer width="3px" />
+							<h:outputText value="minutes"/>	
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Serving Quantity" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{recipeBean.recipe.servingQty}"
+								required="true" styleClass="inputCommon" />
 						</p:column>
 					</p:row>
 					
@@ -119,7 +123,9 @@
 							<h:outputText value="Total Calorie" />
 						</p:column>
 						<p:column>
-							<h:outputText value="Total Calorie" />
+							<h:outputText value="#{recipeBean.totalCalorie}" id="totalCalorie" />
+							<p:spacer width="3px" />
+							<h:outputText value="cal"/>	
 						</p:column>
 					</p:row>
 
@@ -148,7 +154,7 @@
 										itemValue="#{ingredientform.id}" />
 								</p:selectOneMenu>
 								<p:commandButton value="Add"
-									action="#{recipeBean.addIngredient}" update="ingredientGrid,ingredientTable" />
+									action="#{recipeBean.addIngredient}" update="ingredientGrid,ingredientTable,:categoryForm:totalCalorie" />
 							</p:panelGrid>
 
 							<p:dataList id="ingredientTable"
@@ -160,11 +166,11 @@
 								<p:spacer width="3px" />
 								<h:outputText value="#{ingredient.ingredient.name}" />
 								<p:spacer width="3px" />
-								<h:outputText value="#{ingredient.ingredientForm.name}" />
+								<h:outputText value="#{ingredient.ingredientForm.name}" />	
 								<p:spacer width="6px" />
 								<p:commandLink value="[X]" style="color:red; font-size:10px"
 									action="#{recipeBean.removeIngredient(ingredient.uuid)}"
-									update="ingredientTable" />
+									update="ingredientTable,:categoryForm:totalCalorie" />
 							</p:dataList>
 
 						</p:column>

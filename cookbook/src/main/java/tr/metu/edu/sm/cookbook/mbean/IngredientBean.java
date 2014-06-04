@@ -35,6 +35,7 @@ public class IngredientBean {
 		MessagesUtil.setGlobalInfoMessage(MessagesUtil
 				.getValue("createIngredientSuccessful"));
 		ingredient = new Ingredient();
+		ingredient.setCalorieUnit(new Unit());
 	}
 
 	public void update() {

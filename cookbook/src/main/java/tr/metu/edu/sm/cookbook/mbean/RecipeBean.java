@@ -39,43 +39,41 @@ import tr.metu.edu.sm.cookbook.util.FacesUtil;
 @Qualifier("recipeBean")
 @Scope("session")
 public class RecipeBean {
-	
+
 	@Autowired
 	private RecipeService<Recipe, Integer> service;
-	
+
 	@Autowired
 	private RatingService<Rating, Integer> serviceRating;
-	
+
 	@Autowired
 	private CommentService<Comment, Integer> serviceComment;
-	
+
 	@Autowired
 	private IngredientService<Ingredient, Integer> serviceIngredient;
-	
+
 	@Autowired
 	private IngredientformService<Ingredientform, Integer> serviceIngredientform;
-	
+
 	@Autowired
 	private RecipeingredientService<Recipeingredient, Integer> serviceRecipeingredient;
-	
-	@Autowired 
+
+	@Autowired
 	private CategoryService<Category, Integer> serviceCategory;
-	
-	@Autowired 
+
+	@Autowired
 	private CuisineService<Cuisine, Integer> serviceCuisine;
-	
-	@Autowired 
+
+	@Autowired
 	private CookingmethodService<Cookingmethod, Integer> serviceCookingmethod;
-	
-	@Autowired 
+
+	@Autowired
 	private UnitService<Unit, Integer> serviceUnit;
 
 	private Recipe recipe = null;
 	private Recipeingredient recipeingredient = null;
 	private List<Recipeingredient> ingredients = new ArrayList<>();
-	
-	private List<Recipe> reciperequests = new ArrayList<>();
-	
+
 	@PostConstruct
 	private void init() {
 		refreshRecipe();
@@ -87,14 +85,14 @@ public class RecipeBean {
 		recipe.setCategory(new Category());
 		recipe.setCookingMethod(new Cookingmethod());
 		recipe.setCuisine(new Cuisine());
-		
+
 		HttpSession session = FacesUtil.getSession();
 		User user = (User) session.getAttribute("user");
 		recipe.setUserId(user);
-		
+
 		recipe.setCreatedDate("2014");
 		recipe.setStatus("requested");
-		
+
 		recipe.setRecipeingredientList(ingredients);
 	}
 
@@ -117,7 +115,7 @@ public class RecipeBean {
 
 	public void create() {
 		service.create(recipe);
-		
+
 		ingredients = new ArrayList<>();
 		refreshRecipeIngredient();
 		refreshRecipe();
@@ -150,21 +148,11 @@ public class RecipeBean {
 	public void share(int rating) {
 
 	}
-	
-	public String show()
-	{
-		return "";
-	}
-	
-	public String showrequest()
-	{
-		return "";
-	}
-	
+
 	public List<Recipe> search(Recipe recipe) {
 		return null;
 	}
-	
+
 	public List<Recipe> advancedSearch(Recipe recipe) {
 		return null;
 	}
@@ -176,7 +164,7 @@ public class RecipeBean {
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
 	}
-	
+
 	public Recipeingredient getRecipeingredient() {
 		return recipeingredient;
 	}
@@ -193,49 +181,59 @@ public class RecipeBean {
 		this.ingredients = ingredients;
 	}
 
-	public List<Recipe> getReciperequests() {
-		return getAll();
-	}
-
-	public void setReciperequests(List<Recipe> reciperequests) {
-		this.reciperequests = reciperequests;
-	}
-
 	public List<Ingredient> complete(String query) {
 		return serviceIngredient.searchIngredients(query);
-    }
-	
+	}
+
 	public void addIngredient() {
-		
+
 		Unit unit = serviceUnit.getById(recipeingredient.getUnit().getId());
 		recipeingredient.setUnit(unit);
-		
-		Ingredient ingredient = serviceIngredient.getById(recipeingredient.getIngredient().getId());
+
+		Ingredient ingredient = serviceIngredient.getById(recipeingredient
+				.getIngredient().getId());
 		recipeingredient.setIngredient(ingredient);
-		
-		Ingredientform ingredientform = serviceIngredientform.getById(recipeingredient.getIngredientForm().getId());
+
+		Ingredientform ingredientform = serviceIngredientform
+				.getById(recipeingredient.getIngredientForm().getId());
 		recipeingredient.setIngredientForm(ingredientform);
-		
+
 		UUID uuid = UUID.randomUUID();
 		recipeingredient.setUuid(uuid.toString());
-		
+
 		ingredients.add(recipeingredient);
-		
+
 		refreshRecipeIngredient();
 	}
-	
+
 	public void removeIngredient(String uuid) {
-		if(ingredients != null && !ingredients.isEmpty()) {
+		if (ingredients != null && !ingredients.isEmpty()) {
 			List<Recipeingredient> refined = new ArrayList<>();
-			
+
 			for (Recipeingredient ingredient : ingredients) {
-				if(!uuid.equals(ingredient.getUuid())) {
+				if (!uuid.equals(ingredient.getUuid())) {
 					refined.add(ingredient);
 				}
 			}
-			
+
 			this.ingredients = refined;
 		}
+	}
+	
+	public int getTotalCalorie() {
+		int total = 0;
+		for (Recipeingredient recipeingredient : ingredients) {
+			
+			Ingredient ingredient = recipeingredient.getIngredient();
+			if(ingredient.getCalorieUnit().getId() == recipeingredient.getUnit().getId()) {
+				int number = recipeingredient.getNumber();
+				double calorie = ingredient.getCalorie();
+				calorie = calorie * number;
+				total += ingredient.getCalorie();
+			}
+		}
+		
+		return total;
 	}
 
 }
