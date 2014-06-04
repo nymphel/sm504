@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Cuisine;
-import tr.metu.edu.sm.cookbook.entity.Ingredient;
-import tr.metu.edu.sm.cookbook.entity.Unit;
 import tr.metu.edu.sm.cookbook.service.CuisineService;
 import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 

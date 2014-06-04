@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.RateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -74,11 +75,12 @@ public class RecipeBean {
 	private Recipe recipe = null;
 	private Recipeingredient recipeingredient = null;
 	private List<Recipeingredient> ingredients = new ArrayList<>();
+	private int rating;
 
 	@PostConstruct
 	private void init() {
-		refreshRecipe();
-		refreshRecipeIngredient();
+//		refreshRecipe();
+//		refreshRecipeIngredient();
 	}
 
 	private void refreshRecipe() {
@@ -136,20 +138,7 @@ public class RecipeBean {
 	public Recipe getById(Integer id) {
 		recipe = service.getById(id);
 		
-		recipe.setCategory(serviceCategory.getById(recipe.getCategory().getId()));
-		recipe.setCookingMethod(serviceCookingmethod.getById(recipe.getCookingMethod().getId()));
-		recipe.setCuisine(serviceCuisine.getById(recipe.getCuisine().getId()));
-
-		List<Recipeingredient> recipeingredientList = recipe.getRecipeingredientList();
-		if(recipeingredientList != null && !recipeingredientList.isEmpty()) {
-			for (Recipeingredient recipeingredient : recipeingredientList) {
-				recipeingredient.setIngredient(serviceIngredient.getById(recipeingredient.getIngredient().getId()));
-				recipeingredient.setIngredientForm(serviceIngredientform.getById(recipeingredient.getIngredientForm().getId()));
-				recipeingredient.setUnit(serviceUnit.getById(recipeingredient.getUnit().getId()));
-			}
-		}
-		
-		return null;
+		return recipe;
 	}
 
 	public List<Recipe> getAll() {
@@ -254,5 +243,68 @@ public class RecipeBean {
 		
 		return total;
 	}
+
+	public int getRating() {
+		HttpSession session = FacesUtil.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		Rating userRating = getUserRating(user);
+		if(userRating != null) {
+			this.rating = userRating.getRating();
+		}
+		
+		return this.rating;
+	}
+	
+	public Rating getUserRating(User user) {
+		List<Rating> ratingList = this.recipe.getRatingList();
+		if(ratingList != null && !ratingList.isEmpty()) {
+			
+			for (Rating rating : ratingList) {
+				User rater = rating.getUserId();
+				if(rater.getId() == user.getId()) {
+					return rating;
+				}
+			}
+		}
+		
+		return null;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	
+	public void onrate(RateEvent rateEvent) {
+		
+		HttpSession session = FacesUtil.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		Rating userRating = getUserRating(user);
+		
+		int score = ((Integer) rateEvent.getRating()).intValue();
+		Rating rate = new Rating();
+		rate.setRating(score);
+		rate.setRecipe(recipe);
+		rate.setUserId(user);
+		
+		if(userRating == null) {
+			serviceRating.create(rate);
+		} else {
+			rate.setId(userRating.getId());
+			serviceRating.update(rate);
+		}
+		
+	}
+     
+    public void oncancel() {
+    	HttpSession session = FacesUtil.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		Rating userRating = getUserRating(user);
+		if(userRating != null) {
+			serviceRating.delete(userRating.getId());
+		}
+    }
 
 }

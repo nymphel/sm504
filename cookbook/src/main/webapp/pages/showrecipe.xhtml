@@ -151,6 +151,23 @@
 							
 						</p:column>
 					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Rating" />
+						</p:column>
+						<p:column>
+						<p:rating id="rating" value="#{recipeBean.rating}" rendered="#{userBean.displayName != null}">
+							<p:ajax event="rate" listener="#{recipeBean.onrate}" update="rating, avgRating"/>
+            				<p:ajax event="cancel" listener="#{recipeBean.oncancel}" update="rating, avgRating" />
+						</p:rating>
+						<p:spacer width="3px"/>
+							<h:outputText value="Average: "/>
+							<h:outputText id="avgRating" value="#{recipeBean.recipe.averageRating}"/>
+						</p:column>
+					</p:row>
+					
+					
 
 
 					<f:facet name="footer">

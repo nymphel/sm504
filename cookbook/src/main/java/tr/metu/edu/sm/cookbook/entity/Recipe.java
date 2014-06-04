@@ -24,6 +24,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -83,7 +84,7 @@ public class Recipe implements Serializable {
     private Cuisine cuisine;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe", fetch = FetchType.EAGER)
     private List<Recipeingredient> recipeingredientList;
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe", fetch = FetchType.EAGER)
     private List<Rating> ratingList;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
     private List<Comment> commentList;
@@ -274,6 +275,20 @@ public class Recipe implements Serializable {
     @Override
     public String toString() {
         return "tr.metu.edu.sm.cookbook.entity.Recipe[ id=" + id + " ]";
+    }
+    
+    @Transient
+    public double getAverageRating() {
+    	double r = 0;
+    	
+    	if(this.ratingList != null && !this.ratingList.isEmpty()) {
+    		for (Rating rating : this.ratingList) {
+    			r += (double)(rating.getRating());
+			}
+    		r = r / (double)(this.ratingList.size());
+    	}
+    	
+    	return r;
     }
     
 }

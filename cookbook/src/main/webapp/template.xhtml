@@ -31,6 +31,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="search.jsf">#{msg.cookbook}</a></li>
 					<li> <p:commandLink action="#{userBean.logout}" value="#{msg.logout}" immediate="true" ajax="false"/></li>
+					<li> <p:commandLink action="#{recipeBean.getById(6)}" value="Test" immediate="true" ajax="false"/></li>
 				</ul>
 				<div class="welcome"><br/>Welcome, #{userBean.displayName}</div>
 			</div>
@@ -64,7 +65,9 @@
 				<p:menuitem value="#{msg.createUnit}" immediate="true" ajax="false"
 					url="unit.jsf" />	
 				<p:menuitem value="#{msg.createRecipe}" immediate="true" ajax="false"
-					url="recipe.jsf" />							
+					url="recipe.jsf" />			
+				<p:menuitem value="#{msg.searchRecipe}" immediate="true" ajax="false"
+					url="search.jsf" />					
 					
 			</p:menuButton>
 		
