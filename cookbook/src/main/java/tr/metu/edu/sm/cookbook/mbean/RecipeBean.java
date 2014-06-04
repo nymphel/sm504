@@ -130,6 +130,21 @@ public class RecipeBean {
 	}
 
 	public Recipe getById(Integer id) {
+		recipe = service.getById(id);
+		
+		recipe.setCategory(serviceCategory.getById(recipe.getCategory().getId()));
+		recipe.setCookingMethod(serviceCookingmethod.getById(recipe.getCookingMethod().getId()));
+		recipe.setCuisine(serviceCuisine.getById(recipe.getCuisine().getId()));
+
+		List<Recipeingredient> recipeingredientList = recipe.getRecipeingredientList();
+		if(recipeingredientList != null && !recipeingredientList.isEmpty()) {
+			for (Recipeingredient recipeingredient : recipeingredientList) {
+				recipeingredient.setIngredient(serviceIngredient.getById(recipeingredient.getIngredient().getId()));
+				recipeingredient.setIngredientForm(serviceIngredientform.getById(recipeingredient.getIngredientForm().getId()));
+				recipeingredient.setUnit(serviceUnit.getById(recipeingredient.getUnit().getId()));
+			}
+		}
+		
 		return null;
 	}
 

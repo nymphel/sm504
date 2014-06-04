@@ -13,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -80,7 +81,7 @@ public class Recipe implements Serializable {
     @JoinColumn(name = "cuisine", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Cuisine cuisine;
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe", fetch = FetchType.EAGER)
     private List<Recipeingredient> recipeingredientList;
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "recipe")
     private List<Rating> ratingList;
