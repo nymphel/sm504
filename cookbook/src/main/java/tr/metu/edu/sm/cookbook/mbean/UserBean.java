@@ -53,7 +53,7 @@ public class UserBean implements Serializable {
 	}
 
 	public String login() {
-		User user = userService.getUserByEmailAndPassword(email, GenericUtil.decode(password));
+		User user = userService.getUserByEmailAndPassword(email, GenericUtil.encode(password));
 		logger.info("user with email: "+email + " is attempting to login.");
 		
 		if (user != null) {
@@ -93,6 +93,8 @@ public class UserBean implements Serializable {
 			logger.info("User found with given credentials.");
 			return "";
 		}
+		
+		user.setPassword(GenericUtil.encode(user.getPassword()));
 		
 		userService.create(user);
 		

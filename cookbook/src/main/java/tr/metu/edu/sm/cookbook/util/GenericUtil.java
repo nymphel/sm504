@@ -19,7 +19,7 @@ public class GenericUtil {
 		return keys;
 	}
 
-	public static String decode(String str) {
+	public static String encode(String str) {
 		
 		String decoded = null;
 		if (str != null) {

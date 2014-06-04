@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import tr.metu.edu.sm.cookbook.dao.RecipeDao;
 import tr.metu.edu.sm.cookbook.dao.parent.GenericDao;
 import tr.metu.edu.sm.cookbook.entity.Recipe;
+import tr.metu.edu.sm.cookbook.entity.RecipeFilter;
 import tr.metu.edu.sm.cookbook.service.parent.GenericServiceImpl;
 
 @Service(value = "recipeService")
@@ -25,7 +26,7 @@ public class RecipeServiceImpl extends
 
 
 	@Override
-	public List<Recipe> searchRecipes(Recipe e) {
+	public List<Recipe> searchRecipes(RecipeFilter e) {
 		// TODO Auto-generated method stub
 		return null;
 	}
