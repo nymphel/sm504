@@ -29,9 +29,7 @@
 			<h:form>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="inventory.jsf">#{msg.cookbook}</a></li>
-					<li> <h:outputLink value="createcookingmethods.jsf" name="#{msg.createCookingMethods}" immediate="true" ajax="false">#{msg.createCookingMethods}</h:outputLink></li>
-					<li> <h:outputLink value="createcuisinetypes.jsf" name="#{msg.createCuisineTypes}" immediate="true" ajax="false">#{msg.createCuisineTypes}</h:outputLink></li>
+					<li class="active"><a href="search.jsf">#{msg.cookbook}</a></li>
 					<li> <p:commandLink action="#{userBean.logout}" value="#{msg.logout}" immediate="true" ajax="false"/></li>
 				</ul>
 				<div class="welcome"><br/>Welcome, #{userBean.displayName}</div>
@@ -41,6 +39,36 @@
 		</div>
 		
 	</div>
+
+
+<style type="text/css">
+.ui-menu {
+	width:200px !important;
+}
+</style>
+	<h:form>
+		<p:spacer width="10px"/>
+			<p:menuButton value="Menu">
+				<p:menuitem value="#{msg.createCategory}" immediate="true" ajax="false"
+					url="category.jsf" />
+				<p:menuitem value="#{msg.manageCategory}" immediate="true" ajax="false"
+					url="managecategory.jsf" />	
+				<p:menuitem value="#{msg.createCuisineTypes}" immediate="true" ajax="false"
+					url="cuisine.jsf" />
+				<p:menuitem value="#{msg.createCookingMethods}" immediate="true" ajax="false"
+					url="cookingmethod.jsf" />		
+				<p:menuitem value="#{msg.createIngredient}" immediate="true" ajax="false"
+					url="ingredient.jsf" />
+				<p:menuitem value="#{msg.createIngredientForm}" immediate="true" ajax="false"
+					url="ingredientform.jsf" />
+				<p:menuitem value="#{msg.createUnit}" immediate="true" ajax="false"
+					url="unit.jsf" />	
+				<p:menuitem value="#{msg.createRecipe}" immediate="true" ajax="false"
+					url="recipe.jsf" />							
+					
+			</p:menuButton>
+		
+	</h:form>
 
 	<div class="container">
 

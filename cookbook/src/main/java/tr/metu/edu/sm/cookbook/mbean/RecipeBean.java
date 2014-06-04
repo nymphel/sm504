@@ -34,6 +34,7 @@ import tr.metu.edu.sm.cookbook.service.RecipeService;
 import tr.metu.edu.sm.cookbook.service.RecipeingredientService;
 import tr.metu.edu.sm.cookbook.service.UnitService;
 import tr.metu.edu.sm.cookbook.util.FacesUtil;
+import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
 @Component
 @Qualifier("recipeBean")
@@ -115,6 +116,9 @@ public class RecipeBean {
 
 	public void create() {
 		service.create(recipe);
+		
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil
+				.getValue("createRecipeSuccessful"));
 
 		ingredients = new ArrayList<>();
 		refreshRecipeIngredient();
@@ -244,7 +248,7 @@ public class RecipeBean {
 				int number = recipeingredient.getNumber();
 				double calorie = ingredient.getCalorie();
 				calorie = calorie * number;
-				total += ingredient.getCalorie();
+				total += calorie;
 			}
 		}
 		

@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Category;
-import tr.metu.edu.sm.cookbook.entity.Cuisine;
 import tr.metu.edu.sm.cookbook.service.CategoryService;
 import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
@@ -62,12 +61,7 @@ public class CategoryBean {
 	}
 
 	public List<Category> getAll() {
-		List<Category> all = service.getAll();
-		if (category != null && category.getId() == null && all != null
-				&& !all.isEmpty()) {
-			category = all.get(0);
-		}
-		return all;
+		return service.getAll();
 	}
 
 	public Category getCategory() {

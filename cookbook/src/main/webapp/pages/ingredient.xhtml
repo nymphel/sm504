@@ -13,7 +13,7 @@
 				<p:panelGrid>
 					<f:facet name="header">
 						<p:row>
-							<p:column colspan="3">#{msg.createCuisineTypes}</p:column>
+							<p:column colspan="3">#{msg.createIngredient}</p:column>
 						</p:row>
 					</f:facet>
 
@@ -23,13 +23,14 @@
 						</p:column>
 						<p:column>
 							<p:inputText id="ingredientName" styleClass="inputCommon"
-								required="true" requiredMessage="#{msg.required}"
-								value="#{ingredientBean.ingredient.name}" autocomplete="false">
+								required="true" requiredMessage="#{msg.required}" 
+								value="#{ingredientBean.ingredient.name}" autocomplete="off">
 								<f:validateLength minimum="2" maximum="15" />
 							</p:inputText>
 						</p:column>							
 						<p:column>
 							<p:selectBooleanCheckbox value="#{ingredientBean.ingredient.allergenic}" />
+							<p:spacer width="2"/>
 							<p:outputLabel value="#{msg.ingredientAllergenic}" />
 						</p:column>
 					</p:row>
@@ -49,7 +50,7 @@
 							<p:outputLabel for="calorieUnit" value="#{msg.ingredientCalorieUnit}" />
 						</p:column>
 						<p:column>
-        					<p:selectOneMenu id="calorieUnit" value="#{ingredientBean.ingredient.calorieUnit.id}">
+        					<p:selectOneMenu id="calorieUnit" value="#{ingredientBean.ingredient.calorieUnit.id}" styleClass="inputCommon">
         						<f:selectItems value="#{unitBean.all}" var="unit" itemLabel="#{unit.name}" itemValue="#{unit.id}" />
         					</p:selectOneMenu>
 						</p:column>
