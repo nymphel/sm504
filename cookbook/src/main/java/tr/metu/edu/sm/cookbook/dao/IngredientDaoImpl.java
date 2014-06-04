@@ -2,6 +2,8 @@ package tr.metu.edu.sm.cookbook.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.springframework.stereotype.Repository;
 
 import tr.metu.edu.sm.cookbook.dao.parent.GenericDaoImpl;
@@ -17,10 +19,13 @@ public class IngredientDaoImpl extends GenericDaoImpl<Ingredient, Integer> imple
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ingredient> searchIngredients(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = entityManager.createQuery("select ing from Ingredient ing where ing.name like :keyword");
+		query.setParameter("keyword", "%"+keyword+"%");
+		
+		return query.getResultList();
 	}
 
 }

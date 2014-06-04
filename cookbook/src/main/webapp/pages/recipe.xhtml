@@ -75,7 +75,7 @@
 							<h:outputText value="Cooking Time *" />
 						</p:column>
 						<p:column>
-							<p:inputMask mask="999" value="#{recipeBean.recipe.cookingTime}" required="true" />
+							<p:inputMask mask="999" value="#{recipeBean.recipe.cookingTime}" required="true" styleClass="inputCommon" />
 						</p:column>
 					</p:row>
 
@@ -84,7 +84,7 @@
 							<h:outputText value="Difficulty Level" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu value="#{recipeBean.recipe.difficulty}">
+							<p:selectOneMenu value="#{recipeBean.recipe.difficulty}" style="width:180px">
 								<f:selectItem itemLabel="Easy" itemValue="Easy"/>
 								<f:selectItem itemLabel="Medium" itemValue="Medium"/>
 								<f:selectItem itemLabel="Hard" itemValue="Hard"/>
@@ -94,7 +94,12 @@
 							<h:outputText value="Directives" />
 						</p:column>
 						<p:column rowspan="3">
-							<p:inputText value="#{recipeBean.recipe.directive}" required="true" />
+						<p:panelGrid columns="1">
+							<p:inputTextarea rows="5" cols="30" counter="display" styleClass="inputCommon"
+								maxlength="100000" value="#{recipeBean.recipe.directive}"
+								counterTemplate="{0} characters remaining." autoResize="false" />
+    						<h:outputText id="display" />
+    					</p:panelGrid>	
 						</p:column>
 					</p:row>
 					
@@ -103,7 +108,7 @@
 							<h:outputText value="Serving Quantity" />
 						</p:column>
 						<p:column>
-							<p:inputText value="#{recipeBean.recipe.servingQty}" required="true" />
+							<p:inputText value="#{recipeBean.recipe.servingQty}" required="true" styleClass="inputCommon" />
 						</p:column>
 					</p:row>
 					
@@ -112,7 +117,7 @@
 							<h:outputText value="Preparation Time" />
 						</p:column>
 						<p:column>
-							<p:inputText value="#{recipeBean.recipe.prepTime}" required="true" />
+							<p:inputText value="#{recipeBean.recipe.prepTime}" required="true" styleClass="inputCommon" />
 						</p:column>
 					</p:row>
 					
@@ -121,7 +126,21 @@
 							<h:outputText value="Ingredients" />
 						</p:column>
 						<p:column rowspan="2">
-							<h:outputText value="b" />
+						<p:panelGrid columns="5">
+							<p:inputText value="#{recipeBean.recipeingredient.number}" style="width:50px" />
+							<p:selectOneMenu value="#{recipeBean.recipeingredient.unit.id}">
+								<f:selectItems value="#{unitBean.all}" var="unit"
+									itemLabel="#{unit.name}" itemValue="#{unit.id}" />
+							</p:selectOneMenu>
+							<p:autoComplete value="#{recipeBean.recipeingredient.ingredient.id}" 
+								completeMethod="#{recipeBean.complete}" var="ingredient" forceSelection="true"
+								itemLabel="#{ingredient.name}" itemValue="#{ingredient.id}"/>
+							<p:selectOneMenu value="#{recipeBean.recipeingredient.ingredientForm.id}">
+								<f:selectItems value="#{ingredientformBean.all}" var="ingredientform"
+									itemLabel="#{ingredientform.name}" itemValue="#{ingredientform.id}" />
+							</p:selectOneMenu>	
+							<p:commandButton value="Add" />
+						</p:panelGrid>		
 						</p:column>
 						<p:column>
 							<h:outputText value="Tips" />

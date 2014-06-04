@@ -23,8 +23,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 /**
  *
  * @author rylai

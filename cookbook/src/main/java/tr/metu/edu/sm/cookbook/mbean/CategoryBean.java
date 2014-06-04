@@ -2,12 +2,15 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import tr.metu.edu.sm.cookbook.entity.Category;
+import tr.metu.edu.sm.cookbook.entity.Cuisine;
 import tr.metu.edu.sm.cookbook.service.CategoryService;
 import tr.metu.edu.sm.cookbook.util.MessagesUtil;
 
@@ -19,7 +22,12 @@ public class CategoryBean {
 	@Autowired
 	private CategoryService<Category, Integer> service;
 
-	private Category category = new Category();
+	private Category category;
+	
+	@PostConstruct
+	private void init() {
+		category = new Category();
+	}
 
 	public void create() {
 		service.create(category);

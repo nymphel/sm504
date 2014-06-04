@@ -31,8 +31,7 @@ public class IngredientServiceImpl extends
 
 	@Override
 	public List<Ingredient> searchIngredients(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.searchIngredients(keyword);
 	}
 
 }

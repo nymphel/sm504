@@ -1,5 +1,6 @@
 package tr.metu.edu.sm.cookbook.mbean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -69,6 +70,10 @@ public class RecipeBean {
 	private UnitService<Unit, Integer> serviceUnit;
 
 	private Recipe recipe = null;
+	private Recipeingredient recipeingredient = null;
+	private List<Recipeingredient> ingredients = new ArrayList<>();
+	
+	private List<Recipe> reciperequests = new ArrayList<>();
 	
 	@PostConstruct
 	private void init() {
@@ -83,10 +88,11 @@ public class RecipeBean {
 		
 		recipe.setCreatedDate("2014");
 		recipe.setStatus("requested");
-	}
-
-	public List<Recipe> getRecipeRequests() {
-		return null;
+		
+		recipeingredient = new Recipeingredient();
+		recipeingredient.setIngredient(new Ingredient());
+		recipeingredient.setIngredientForm(new Ingredientform());
+		recipeingredient.setUnit(new Unit());
 	}
 
 	public void approve() {
@@ -115,7 +121,7 @@ public class RecipeBean {
 	}
 
 	public List<Recipe> getAll() {
-		return null;
+		return service.getAll();
 	}
 
 	public void rate(int rating) {
@@ -128,6 +134,16 @@ public class RecipeBean {
 
 	public void share(int rating) {
 
+	}
+	
+	public String show()
+	{
+		return "";
+	}
+	
+	public String showrequest()
+	{
+		return "";
 	}
 	
 	public List<Recipe> search(Recipe recipe) {
@@ -145,5 +161,33 @@ public class RecipeBean {
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
 	}
+	
+	public Recipeingredient getRecipeingredient() {
+		return recipeingredient;
+	}
+
+	public void setRecipeingredient(Recipeingredient recipeingredient) {
+		this.recipeingredient = recipeingredient;
+	}
+
+	public List<Recipeingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Recipeingredient> ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	public List<Recipe> getReciperequests() {
+		return getAll();
+	}
+
+	public void setReciperequests(List<Recipe> reciperequests) {
+		this.reciperequests = reciperequests;
+	}
+
+	public List<Ingredient> complete(String query) {
+		return serviceIngredient.searchIngredients(query);
+    }
 
 }
