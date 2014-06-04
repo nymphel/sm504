@@ -7,15 +7,19 @@
 package tr.metu.edu.sm.cookbook.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -30,10 +34,11 @@ public class Recipeingredient implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     @Basic(optional = false)
     @Column(name = "number")
-    private double number;
+    private int number;
     @JoinColumn(name = "ingredientForm", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Ingredientform ingredientForm;
@@ -46,6 +51,9 @@ public class Recipeingredient implements Serializable {
     @JoinColumn(name = "recipe", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Recipe recipe;
+    
+    @Transient
+    private String uuid;
 
     public Recipeingredient() {
     }
@@ -54,7 +62,7 @@ public class Recipeingredient implements Serializable {
         this.id = id;
     }
 
-    public Recipeingredient(Integer id, double number) {
+    public Recipeingredient(Integer id, int number) {
         this.id = id;
         this.number = number;
     }
@@ -67,11 +75,11 @@ public class Recipeingredient implements Serializable {
         this.id = id;
     }
 
-    public double getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(double number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -131,5 +139,13 @@ public class Recipeingredient implements Serializable {
     public String toString() {
         return "tr.metu.edu.sm.cookbook.entity.Recipeingredient[ id=" + id + " ]";
     }
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
     
 }

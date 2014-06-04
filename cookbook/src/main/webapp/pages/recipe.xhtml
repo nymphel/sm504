@@ -13,7 +13,7 @@
 				<p:panelGrid>
 					<f:facet name="header">
 						<p:row>
-							<p:column colspan="4">#{msg.createCategory}</p:column>
+							<p:column colspan="2">#{msg.createCategory}</p:column>
 						</p:row>
 					</f:facet>
 
@@ -28,12 +28,6 @@
 								<f:validateLength minimum="2" maximum="15" />
 							</p:inputText>
 						</p:column>
-						<p:column>
-							<h:outputText value="Total Calorie" />
-						</p:column>
-						<p:column>
-							<h:outputText value="Total Calorie" />
-						</p:column>
 					</p:row>
 
 					<p:row>
@@ -47,6 +41,9 @@
 									itemLabel="#{category.name}" itemValue="#{category.id}" />
 							</p:selectOneMenu>
 						</p:column>
+					</p:row>
+					
+					<p:row>
 						<p:column>
 							<h:outputText value="Cooking Method *" />
 						</p:column>
@@ -71,99 +68,139 @@
 									itemLabel="#{cuisine.name}" itemValue="#{cuisine.id}" />
 							</p:selectOneMenu>
 						</p:column>
-						<p:column>
-							<h:outputText value="Cooking Time *" />
-						</p:column>
-						<p:column>
-							<p:inputMask mask="999" value="#{recipeBean.recipe.cookingTime}" required="true" styleClass="inputCommon" />
-						</p:column>
 					</p:row>
-
+					
 					<p:row>
 						<p:column>
 							<h:outputText value="Difficulty Level" />
 						</p:column>
 						<p:column>
-							<p:selectOneMenu value="#{recipeBean.recipe.difficulty}" style="width:180px">
-								<f:selectItem itemLabel="Easy" itemValue="Easy"/>
-								<f:selectItem itemLabel="Medium" itemValue="Medium"/>
-								<f:selectItem itemLabel="Hard" itemValue="Hard"/>
+							<p:selectOneMenu value="#{recipeBean.recipe.difficulty}"
+								style="width:180px">
+								<f:selectItem itemLabel="Easy" itemValue="Easy" />
+								<f:selectItem itemLabel="Medium" itemValue="Medium" />
+								<f:selectItem itemLabel="Hard" itemValue="Hard" />
 							</p:selectOneMenu>
-						</p:column>
-						<p:column rowspan="3">
-							<h:outputText value="Directives" />
-						</p:column>
-						<p:column rowspan="3">
-						<p:panelGrid columns="1">
-							<p:inputTextarea rows="5" cols="30" counter="display" styleClass="inputCommon"
-								maxlength="100000" value="#{recipeBean.recipe.directive}"
-								counterTemplate="{0} characters remaining." autoResize="false" />
-    						<h:outputText id="display" />
-    					</p:panelGrid>	
 						</p:column>
 					</p:row>
 					
+					<p:row>
+						<p:column>
+							<h:outputText value="Cooking Time *" />
+						</p:column>
+						<p:column>
+							<p:inputMask mask="999" value="#{recipeBean.recipe.cookingTime}"
+								required="true" styleClass="inputCommon" />
+						</p:column>
+					</p:row>
+
 					<p:row>
 						<p:column>
 							<h:outputText value="Serving Quantity" />
 						</p:column>
 						<p:column>
-							<p:inputText value="#{recipeBean.recipe.servingQty}" required="true" styleClass="inputCommon" />
+							<p:inputText value="#{recipeBean.recipe.servingQty}"
+								required="true" styleClass="inputCommon" />
 						</p:column>
 					</p:row>
-					
+
 					<p:row>
 						<p:column>
 							<h:outputText value="Preparation Time" />
 						</p:column>
 						<p:column>
-							<p:inputText value="#{recipeBean.recipe.prepTime}" required="true" styleClass="inputCommon" />
+							<p:inputText value="#{recipeBean.recipe.prepTime}"
+								required="true" styleClass="inputCommon" />
 						</p:column>
 					</p:row>
 					
 					<p:row>
-						<p:column rowspan="2">
+						<p:column>
+							<h:outputText value="Total Calorie" />
+						</p:column>
+						<p:column>
+							<h:outputText value="Total Calorie" />
+						</p:column>
+					</p:row>
+
+					<p:row>
+						<p:column>
 							<h:outputText value="Ingredients" />
 						</p:column>
-						<p:column rowspan="2">
-						<p:panelGrid columns="5">
-							<p:inputText value="#{recipeBean.recipeingredient.number}" style="width:50px" />
-							<p:selectOneMenu value="#{recipeBean.recipeingredient.unit.id}">
-								<f:selectItems value="#{unitBean.all}" var="unit"
-									itemLabel="#{unit.name}" itemValue="#{unit.id}" />
-							</p:selectOneMenu>
-							<p:autoComplete value="#{recipeBean.recipeingredient.ingredient.id}" 
-								completeMethod="#{recipeBean.complete}" var="ingredient" forceSelection="true"
-								itemLabel="#{ingredient.name}" itemValue="#{ingredient.id}"/>
-							<p:selectOneMenu value="#{recipeBean.recipeingredient.ingredientForm.id}">
-								<f:selectItems value="#{ingredientformBean.all}" var="ingredientform"
-									itemLabel="#{ingredientform.name}" itemValue="#{ingredientform.id}" />
-							</p:selectOneMenu>	
-							<p:commandButton value="Add" />
-						</p:panelGrid>		
+						<p:column>
+
+							<p:panelGrid columns="5" id="ingredientGrid">
+								<p:inputText value="#{recipeBean.recipeingredient.number}"
+									style="width:50px" />
+								<p:selectOneMenu value="#{recipeBean.recipeingredient.unit.id}">
+									<f:selectItems value="#{unitBean.all}" var="unit"
+										itemLabel="#{unit.name}" itemValue="#{unit.id}" />
+								</p:selectOneMenu>
+								<p:autoComplete
+									value="#{recipeBean.recipeingredient.ingredient.id}"
+									completeMethod="#{recipeBean.complete}" var="ingredient"
+									forceSelection="true" itemLabel="#{ingredient.name}"
+									itemValue="#{ingredient.id}" />
+								<p:selectOneMenu
+									value="#{recipeBean.recipeingredient.ingredientForm.id}">
+									<f:selectItems value="#{ingredientformBean.all}"
+										var="ingredientform" itemLabel="#{ingredientform.name}"
+										itemValue="#{ingredientform.id}" />
+								</p:selectOneMenu>
+								<p:commandButton value="Add"
+									action="#{recipeBean.addIngredient}" update="ingredientGrid,ingredientTable" />
+							</p:panelGrid>
+
+							<p:dataList id="ingredientTable"
+								value="#{recipeBean.ingredients}" var="ingredient">
+
+								<h:outputText value="#{ingredient.number}" />
+								<p:spacer width="3px" />
+								<h:outputText value="#{ingredient.unit.name}" />
+								<p:spacer width="3px" />
+								<h:outputText value="#{ingredient.ingredient.name}" />
+								<p:spacer width="3px" />
+								<h:outputText value="#{ingredient.ingredientForm.name}" />
+								<p:spacer width="6px" />
+								<p:commandLink value="[X]" style="color:red; font-size:10px"
+									action="#{recipeBean.removeIngredient(ingredient.uuid)}"
+									update="ingredientTable" />
+							</p:dataList>
+
 						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<h:outputText value="Directives" />
+						</p:column>
+						<p:column>
+							<p:inputTextarea rows="5" cols="80" maxlength="100000" value="#{recipeBean.recipe.directive}" />
+						</p:column>
+					</p:row>
+					
+					<p:row>
 						<p:column>
 							<h:outputText value="Tips" />
 						</p:column>
 						<p:column>
-							<h:outputText value="b" />
+							<p:inputTextarea rows="3" cols="80" maxlength="100000" value="#{recipeBean.recipe.tip}" />
 						</p:column>
 					</p:row>
-					
+
 					<p:row>
 						<p:column>
 							<h:outputText value="Photo" />
 						</p:column>
 						<p:column>
-							<h:outputText value="b" />
+							
 						</p:column>
 					</p:row>
-					
-					
+
 
 					<f:facet name="footer">
 						<p:row>
-							<p:column colspan="3">
+							<p:column>
 
 							</p:column>
 							<p:column>

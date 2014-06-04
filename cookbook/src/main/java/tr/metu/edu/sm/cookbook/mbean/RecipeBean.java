@@ -2,6 +2,7 @@ package tr.metu.edu.sm.cookbook.mbean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
@@ -77,6 +78,11 @@ public class RecipeBean {
 	
 	@PostConstruct
 	private void init() {
+		refreshRecipe();
+		refreshRecipeIngredient();
+	}
+
+	private void refreshRecipe() {
 		recipe = new Recipe();
 		recipe.setCategory(new Category());
 		recipe.setCookingMethod(new Cookingmethod());
@@ -89,10 +95,16 @@ public class RecipeBean {
 		recipe.setCreatedDate("2014");
 		recipe.setStatus("requested");
 		
+		recipe.setRecipeingredientList(ingredients);
+	}
+
+	private void refreshRecipeIngredient() {
 		recipeingredient = new Recipeingredient();
+		recipeingredient.setNumber(0);
 		recipeingredient.setIngredient(new Ingredient());
 		recipeingredient.setIngredientForm(new Ingredientform());
 		recipeingredient.setUnit(new Unit());
+		recipeingredient.setRecipe(recipe);
 	}
 
 	public void approve() {
@@ -105,7 +117,10 @@ public class RecipeBean {
 
 	public void create() {
 		service.create(recipe);
-		recipe = new Recipe();
+		
+		ingredients = new ArrayList<>();
+		refreshRecipeIngredient();
+		refreshRecipe();
 	}
 
 	public void update() {
@@ -189,5 +204,38 @@ public class RecipeBean {
 	public List<Ingredient> complete(String query) {
 		return serviceIngredient.searchIngredients(query);
     }
+	
+	public void addIngredient() {
+		
+		Unit unit = serviceUnit.getById(recipeingredient.getUnit().getId());
+		recipeingredient.setUnit(unit);
+		
+		Ingredient ingredient = serviceIngredient.getById(recipeingredient.getIngredient().getId());
+		recipeingredient.setIngredient(ingredient);
+		
+		Ingredientform ingredientform = serviceIngredientform.getById(recipeingredient.getIngredientForm().getId());
+		recipeingredient.setIngredientForm(ingredientform);
+		
+		UUID uuid = UUID.randomUUID();
+		recipeingredient.setUuid(uuid.toString());
+		
+		ingredients.add(recipeingredient);
+		
+		refreshRecipeIngredient();
+	}
+	
+	public void removeIngredient(String uuid) {
+		if(ingredients != null && !ingredients.isEmpty()) {
+			List<Recipeingredient> refined = new ArrayList<>();
+			
+			for (Recipeingredient ingredient : ingredients) {
+				if(!uuid.equals(ingredient.getUuid())) {
+					refined.add(ingredient);
+				}
+			}
+			
+			this.ingredients = refined;
+		}
+	}
 
 }
