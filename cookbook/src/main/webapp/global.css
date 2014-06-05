@@ -63,4 +63,9 @@ body {
 
 .borderlessGrid tr, .borderlessGrid td {
     border: none;
+    padding: 2px;
+}
+
+.ui-fileupload-files tbody tr td {
+	border-color: #efefef;
 }

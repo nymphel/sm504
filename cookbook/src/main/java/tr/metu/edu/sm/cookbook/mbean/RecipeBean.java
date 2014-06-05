@@ -1,5 +1,6 @@
 package tr.metu.edu.sm.cookbook.mbean;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.RateEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -90,6 +93,9 @@ public class RecipeBean {
 		recipe.setCategory(new Category());
 		recipe.setCookingMethod(new Cookingmethod());
 		recipe.setCuisine(new Cuisine());
+		recipe.setCookingTime(30);
+		recipe.setPrepTime(15);
+		recipe.setServingQty(4);
 
 		HttpSession session = FacesUtil.getSession();
 		User user = (User) session.getAttribute("user");
@@ -103,7 +109,7 @@ public class RecipeBean {
 
 	private void refreshRecipeIngredient() {
 		recipeingredient = new Recipeingredient();
-		recipeingredient.setNumber(0);
+		recipeingredient.setNumber(1);
 		recipeingredient.setIngredient(new Ingredient());
 		recipeingredient.setIngredientForm(new Ingredientform());
 		recipeingredient.setUnit(new Unit());
@@ -196,13 +202,19 @@ public class RecipeBean {
 	}
 
 	public void addIngredient() {
-
-		Unit unit = serviceUnit.getById(recipeingredient.getUnit().getId());
-		recipeingredient.setUnit(unit);
-
+		
+		if(recipeingredient.getIngredient().getId() == 0) {
+			MessagesUtil.setGlobalWarningMessage(MessagesUtil
+					.getValue("ingredientRequired"));
+			return;
+		}
+		
 		Ingredient ingredient = serviceIngredient.getById(recipeingredient
 				.getIngredient().getId());
 		recipeingredient.setIngredient(ingredient);
+
+		Unit unit = serviceUnit.getById(recipeingredient.getUnit().getId());
+		recipeingredient.setUnit(unit);
 
 		Ingredientform ingredientform = serviceIngredientform
 				.getById(recipeingredient.getIngredientForm().getId());
@@ -235,7 +247,7 @@ public class RecipeBean {
 		for (Recipeingredient recipeingredient : ingredients) {
 			
 			Ingredient ingredient = recipeingredient.getIngredient();
-			if(ingredient.getCalorieUnit().getId() == recipeingredient.getUnit().getId()) {
+			if(ingredient != null && ingredient.getCalorieUnit().getId() == recipeingredient.getUnit().getId()) {
 				int number = recipeingredient.getNumber();
 				double calorie = ingredient.getCalorie();
 				calorie = calorie * number;
@@ -310,12 +322,20 @@ public class RecipeBean {
     }
     
    
-     
     public void upload(FileUploadEvent event) {
     	UploadedFile file = event.getFile();
         if(file != null) {
         	recipe.setPhoto(file.getContents());
         }
+    }
+    
+    public StreamedContent getPhoto() {
+    	byte[] photo = recipe.getPhoto();
+    	if(photo != null && photo.length > 0) {
+    		return new DefaultStreamedContent(new ByteArrayInputStream(photo));
+    	}
+    	
+    	return null;
     }
 
 }

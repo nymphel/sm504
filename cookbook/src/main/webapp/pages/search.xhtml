@@ -7,7 +7,7 @@
 	<title>Welcome to CookBook</title>
 </h:head>
 <h:body>
-	<ui:composition template="../template.xhtml">
+	<ui:composition template="#{userBean.template}">
 		<ui:define name="content">
 			<h:form id="searchForm">
 				<p:panelGrid styleClass="borderlessGrid">
@@ -20,10 +20,18 @@
 								itemValue="#{ingredient.name}" />
 						</p:column>
 						<p:column>
-							<p:commandButton value="#{msg.advancedSearchSearch}"
+							<p:commandButton value="#{msg.advancedSearchSearch}" style="width:140px"
 								action="#{searchBean.search}" process="@all" update="searchForm" />
 						</p:column>
 					</p:row>
+					<p:row>
+						<p:column>
+						</p:column>
+						<p:column>
+						<p:commandButton value="#{msg.advancedSearch}" style="width:140px"
+							immediate="true" ajax="false" action="advancedsearch"/>
+						</p:column>
+					</p:row>	
 				</p:panelGrid>
 			</h:form>
 		</ui:define>

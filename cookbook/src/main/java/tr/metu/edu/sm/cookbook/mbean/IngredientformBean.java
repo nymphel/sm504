@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import tr.metu.edu.sm.cookbook.entity.Cuisine;
 import tr.metu.edu.sm.cookbook.entity.Ingredientform;
 import tr.metu.edu.sm.cookbook.service.IngredientformService;
 import tr.metu.edu.sm.cookbook.util.MessagesUtil;

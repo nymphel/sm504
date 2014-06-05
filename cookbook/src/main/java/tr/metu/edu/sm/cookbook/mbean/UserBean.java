@@ -67,7 +67,7 @@ public class UserBean implements Serializable {
 			
 			logger.info("SUCCESSFUL. Logging the user into system now...");
 
-			return "index";
+			return "search";
 		} else {
 
 			MessagesUtil.setGlobalWarningMessage(MessagesUtil.getValue("invalidLogin"));
@@ -126,5 +126,31 @@ public class UserBean implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public boolean isLoggedIn() {
+		if(this.displayName != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public boolean isAdmin() {
+		if(this.displayName != null && "admin".equals(this.displayName)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public String getTemplate() {
+		String template = "../template.xhtml";
+		
+		if(!isLoggedIn()) {
+			template = "../templateLogin.xhtml";
+		}
+		
+		return template;
 	}
 }

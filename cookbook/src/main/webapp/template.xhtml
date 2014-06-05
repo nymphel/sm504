@@ -24,7 +24,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://">#{msg.cookbook}</a>
+				<a class="navbar-brand" href="http://localhost:8080/cookbook">#{msg.cookbook}</a>
 			</div>
 			<h:form>
 			<div class="collapse navbar-collapse">
@@ -51,19 +51,19 @@
 		<p:spacer width="10px"/>
 			<p:menuButton value="Menu">
 				<p:menuitem value="#{msg.createCategory}" immediate="true" ajax="false"
-					url="category.jsf" />
+					url="category.jsf" rendered="#{userBean.admin}"/>
 				<p:menuitem value="#{msg.manageCategory}" immediate="true" ajax="false"
-					url="managecategory.jsf" />	
+					url="managecategory.jsf" rendered="#{userBean.admin}"/>	
 				<p:menuitem value="#{msg.createCuisineTypes}" immediate="true" ajax="false"
-					url="cuisine.jsf" />
+					url="cuisine.jsf" rendered="#{userBean.admin}"/>
 				<p:menuitem value="#{msg.createCookingMethods}" immediate="true" ajax="false"
-					url="cookingmethod.jsf" />		
+					url="cookingmethod.jsf" rendered="#{userBean.admin}"/>		
 				<p:menuitem value="#{msg.createIngredient}" immediate="true" ajax="false"
-					url="ingredient.jsf" />
+					url="ingredient.jsf" rendered="#{userBean.admin}"/>
 				<p:menuitem value="#{msg.createIngredientForm}" immediate="true" ajax="false"
-					url="ingredientform.jsf" />
+					url="ingredientform.jsf" rendered="#{userBean.admin}"/>
 				<p:menuitem value="#{msg.createUnit}" immediate="true" ajax="false"
-					url="unit.jsf" />	
+					url="unit.jsf" rendered="#{userBean.admin}"/>	
 				<p:menuitem value="#{msg.createRecipe}" immediate="true" ajax="false"
 					url="recipe.jsf" />			
 				<p:menuitem value="#{msg.searchRecipe}" immediate="true" ajax="false"
