@@ -47,6 +47,10 @@
 	        <from-outcome>advancedsearch</from-outcome>
             <to-view-id>/pages/advancedsearch.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+	        <from-outcome>showrecipe</from-outcome>
+            <to-view-id>/pages/showrecipe.xhtml</to-view-id>
+        </navigation-case>
         
     </navigation-rule>
 

@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Welcome to CookBook</title>
+</h:head>
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<p:dataTable value="#{recipeBean.all}" var="recipe" style="width:1000px">
+
+					<p:column style="width:52px">
+						<p:graphicImage id="photo" value="#{recipeBean.image}"
+							height="50px" width="50px">
+							<f:param name="recipeId" value="#{recipe.id}" />
+						</p:graphicImage>
+					</p:column>
+
+					<p:column headerText="Recipe Name" style="width:250px">
+						<p:commandLink action="#{recipeBean.showRecipe(recipe.id)}" value="#{recipe.name}" immediate="true" ajax="false"/>
+						
+					</p:column>
+
+					<p:column headerText="Recipe Category">
+						<h:outputText value="#{recipe.category.name}" />
+					</p:column>
+
+					<p:column headerText="Cooking Method">
+						<h:outputText value="#{recipe.cookingMethod.name}" />
+					</p:column>
+
+					<p:column headerText="Cuisine">
+						<h:outputText value="#{recipe.cuisine.name}" />
+					</p:column>
+
+					<p:column headerText="Difficulty Level">
+						<h:outputText value="#{recipe.difficulty}" />
+					</p:column>
+					
+					<p:column headerText="Cooking Time">
+						<h:outputText value="#{recipe.cookingTime} min" />
+					</p:column>
+					
+					<p:column headerText="Preparation Time">
+						<h:outputText value="#{recipe.prepTime} min" />
+					</p:column>
+					
+					<p:column headerText="Serving Quantity">
+						<h:outputText value="#{recipe.servingQty}" />
+					</p:column>
+
+					<p:column headerText="Ingredients" style="width:300px">
+
+						<p:dataList id="ingredientTable"
+							value="#{recipe.recipeingredientList}"
+							var="ingredient">
+
+							<h:outputText value="#{ingredient.number}" />
+							<p:spacer width="3px" />
+							<h:outputText value="#{ingredient.unit.name}" />
+							<p:spacer width="3px" />
+							<h:outputText value="#{ingredient.ingredient.name}" />
+							<p:spacer width="3px" />
+							<h:outputText value="#{ingredient.ingredientForm.name}" />
+						</p:dataList>
+					</p:column>
+
+
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

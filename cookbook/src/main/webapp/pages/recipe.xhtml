@@ -9,6 +9,9 @@
 <h:body>
 	<ui:composition template="../template.xhtml">
 		<ui:define name="content">
+		
+		<h:inputHidden value="#{recipeBean.loadCreate}"/>
+		
 			<h:form id="categoryForm">
 				<p:panelGrid>
 					<f:facet name="header">

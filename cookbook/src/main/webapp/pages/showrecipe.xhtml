@@ -148,7 +148,10 @@
 							<h:outputText value="Photo" />
 						</p:column>
 						<p:column>
-							
+							<p:graphicImage id="photo" value="#{recipeBean.image}"
+								height="300px" width="300px">
+							<f:param name="recipeId" value="#{recipeBean.recipe.id}" />
+						</p:graphicImage>
 						</p:column>
 					</p:row>
 					
@@ -157,9 +160,8 @@
 							<h:outputText value="Rating" />
 						</p:column>
 						<p:column>
-						<p:rating id="rating" value="#{recipeBean.rating}" rendered="#{userBean.displayName != null}">
+						<p:rating id="rating" value="#{recipeBean.rating}" rendered="#{userBean.displayName != null}" cancel="false">
 							<p:ajax event="rate" listener="#{recipeBean.onrate}" update="rating, avgRating"/>
-            				<p:ajax event="cancel" listener="#{recipeBean.oncancel}" update="rating, avgRating" />
 						</p:rating>
 						<p:spacer width="3px"/>
 							<h:outputText value="Average: "/>

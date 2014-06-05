@@ -63,7 +63,7 @@
 						<p:column>
 							<p:inputText id="registerEMail" styleClass="inputCommon"
 								required="true" requiredMessage="#{msg.emailRequired}"
-								value="#{userBean.user.email}" autocomplete="off">
+								value="#{userBean.user.email}" autocomplete="off" validatorMessage="#{msg.invalidEmail}">
 								 <f:validateRegex
 									pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 							</p:inputText>
@@ -78,7 +78,7 @@
 							<p:password id="registerPassword" styleClass="inputCommon"
 								required="true" requiredMessage="#{msg.passwordRequired}"
 								match="registerPasswordMatch" value="#{userBean.user.password}"
-								autocomplete="false">
+								autocomplete="false" validatorMessage="#{msg.passwordNotMatch}">
 								<f:validateLength minimum="2" maximum="30" />
 							</p:password>
 						</p:column>

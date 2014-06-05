@@ -98,6 +98,7 @@ public class UserBean implements Serializable {
 		
 		userService.create(user);
 		
+		MessagesUtil.setGlobalInfoMessage(MessagesUtil.getValue("registerSuccessful"));
 		return "login";
 	}
 	

@@ -1,11 +1,13 @@
 package tr.metu.edu.sm.cookbook.mbean;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.FileUploadEvent;
@@ -82,10 +84,11 @@ public class RecipeBean {
 	private List<Recipeingredient> ingredients = new ArrayList<>();
 	private int rating;
 
-	@PostConstruct
-	private void init() {
+	public String getLoadCreate() {
 		refreshRecipe();
 		refreshRecipeIngredient();
+		
+		return "recipe";
 	}
 
 	private void refreshRecipe() {
@@ -144,9 +147,13 @@ public class RecipeBean {
 	}
 
 	public Recipe getById(Integer id) {
+		return null;
+	}
+	
+	public String showRecipe(Integer id) {
 		recipe = service.getById(id);
 		
-		return recipe;
+		return "showrecipe";
 	}
 
 	public List<Recipe> getAll() {
@@ -271,6 +278,7 @@ public class RecipeBean {
 	}
 	
 	public Rating getUserRating(User user) {
+		this.recipe = service.getById(this.recipe.getId());
 		List<Rating> ratingList = this.recipe.getRatingList();
 		if(ratingList != null && !ratingList.isEmpty()) {
 			
@@ -310,17 +318,6 @@ public class RecipeBean {
 		}
 		
 	}
-     
-    public void oncancel() {
-    	HttpSession session = FacesUtil.getSession();
-		User user = (User) session.getAttribute("user");
-		
-		Rating userRating = getUserRating(user);
-		if(userRating != null) {
-			serviceRating.delete(userRating.getId());
-		}
-    }
-    
    
     public void upload(FileUploadEvent event) {
     	UploadedFile file = event.getFile();
@@ -336,6 +333,28 @@ public class RecipeBean {
     	}
     	
     	return null;
+    }
+    
+
+    
+    public StreamedContent getImage() throws IOException {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
+            // So, we're rendering the HTML. Return a stub StreamedContent so that it will generate right URL.
+            return new DefaultStreamedContent();
+        } else {
+            // So, browser is requesting the image. Return a real StreamedContent with the image bytes.
+            Integer recipeId = Integer.parseInt(context.getExternalContext().getRequestParameterMap().get("recipeId"));
+            Recipe recipe = service.getById(recipeId);
+            
+            byte[] photo = recipe.getPhoto();
+            if(photo == null) {
+            	return null;
+            }
+            
+            return new DefaultStreamedContent(new ByteArrayInputStream(photo));
+        }
     }
 
 }
