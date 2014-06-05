@@ -7,7 +7,9 @@ import java.util.UUID;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.FileUploadEvent;
 import org.primefaces.event.RateEvent;
+import org.primefaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -305,6 +307,15 @@ public class RecipeBean {
 		if(userRating != null) {
 			serviceRating.delete(userRating.getId());
 		}
+    }
+    
+   
+     
+    public void upload(FileUploadEvent event) {
+    	UploadedFile file = event.getFile();
+        if(file != null) {
+        	recipe.setPhoto(file.getContents());
+        }
     }
 
 }

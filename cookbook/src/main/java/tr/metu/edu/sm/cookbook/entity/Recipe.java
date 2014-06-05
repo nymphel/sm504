@@ -62,8 +62,11 @@ public class Recipe implements Serializable {
     private String directive;
     @Column(name = "tip")
     private String tip;
+    
+    @Lob
     @Column(name = "photo")
-    private String photo;
+    private byte[] photo;
+    
     @Basic(optional = false)
     @Column(name = "createdDate")
     private String createdDate;
@@ -172,11 +175,11 @@ public class Recipe implements Serializable {
         this.tip = tip;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

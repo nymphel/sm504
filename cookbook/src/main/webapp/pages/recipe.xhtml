@@ -199,7 +199,8 @@
 							<h:outputText value="Photo" />
 						</p:column>
 						<p:column>
-							
+							<p:fileUpload fileUploadListener="#{recipeBean.upload}"
+								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="1000000" />
 						</p:column>
 					</p:row>
 
