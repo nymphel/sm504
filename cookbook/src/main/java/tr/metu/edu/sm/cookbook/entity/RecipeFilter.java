@@ -1,19 +1,21 @@
 package tr.metu.edu.sm.cookbook.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeFilter implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	private List<String> ingredients;
-	private List<String> excludedingredients;
+	private List<String> ingredients = new ArrayList<>();
+	private List<String> excludedingredients = new ArrayList<>();
 	private int categoryid;
 	private int cuisinetypeid;
 	private int cookingmethodid;
 	private int maxcookingtime;
 	private int maxcalories;
+	private boolean advanced;
 
 	public String getName() {
 		return name;
@@ -77,6 +79,14 @@ public class RecipeFilter implements Serializable {
 
 	public void setMaxcalories(int maxcalories) {
 		this.maxcalories = maxcalories;
+	}
+
+	public boolean isAdvanced() {
+		return advanced;
+	}
+
+	public void setAdvanced(boolean advanced) {
+		this.advanced = advanced;
 	}
 
 }

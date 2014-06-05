@@ -173,7 +173,7 @@
 								<p:spacer width="6px" />
 								<p:commandLink value="[X]" style="color:red; font-size:10px"
 									action="#{recipeBean.removeIngredient(ingredient.uuid)}"
-									update="ingredientTable,:categoryForm:totalCalorie" />
+									update="ingredientTable,:categoryForm:totalCalorie" immediate="true" />
 							</p:dataList>
 
 						</p:column>

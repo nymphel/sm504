@@ -40,6 +40,7 @@ public class AuthFilter implements Filter {
 					|| reqURI.indexOf("/pages/register.jsf") >= 0
 					|| reqURI.indexOf("/pages/search.jsf") >= 0
 					|| reqURI.indexOf("/pages/advancedsearch.jsf") >= 0
+					|| reqURI.indexOf("/pages/listrecipe.jsf") >= 0
 					|| (ses != null && ses.getAttribute("email") != null)
 					|| reqURI.indexOf("/public/") >= 0
 					|| reqURI.contains("javax.faces.resource")) {

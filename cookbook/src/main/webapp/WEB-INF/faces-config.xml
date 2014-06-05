@@ -44,12 +44,20 @@
             <to-view-id>/pages/error.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
+	        <from-outcome>search</from-outcome>
+            <to-view-id>/pages/search.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
 	        <from-outcome>advancedsearch</from-outcome>
             <to-view-id>/pages/advancedsearch.xhtml</to-view-id>
         </navigation-case>
         <navigation-case>
 	        <from-outcome>showrecipe</from-outcome>
             <to-view-id>/pages/showrecipe.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+	        <from-outcome>listrecipe</from-outcome>
+            <to-view-id>/pages/listrecipe.xhtml</to-view-id>
         </navigation-case>
         
     </navigation-rule>

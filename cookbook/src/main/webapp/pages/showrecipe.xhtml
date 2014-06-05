@@ -7,7 +7,7 @@
 	<title>Welcome to CookBook</title>
 </h:head>
 <h:body>
-	<ui:composition template="../template.xhtml">
+	<ui:composition template="#{userBean.template}">
 		<ui:define name="content">
 			<h:form id="categoryForm">
 				<p:panelGrid>
@@ -160,7 +160,8 @@
 							<h:outputText value="Rating" />
 						</p:column>
 						<p:column>
-						<p:rating id="rating" value="#{recipeBean.rating}" rendered="#{userBean.displayName != null}" cancel="false">
+						<p:rating id="rating" value="#{recipeBean.rating}" rendered="#{userBean.displayName != null}" 
+							cancel="false" disabled="#{!userBean.loggedIn}">
 							<p:ajax event="rate" listener="#{recipeBean.onrate}" update="rating, avgRating"/>
 						</p:rating>
 						<p:spacer width="3px"/>

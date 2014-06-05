@@ -12,12 +12,6 @@ public class RecipeDaoImpl extends GenericDaoImpl<Recipe, Integer> implements
 		RecipeDao {
 
 	@Override
-	public List<Recipe> searchRecipes(Recipe recipe) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Recipe> getRecipesByStatus(String status) {
 		// TODO Auto-generated method stub
 		return null;

@@ -7,7 +7,6 @@ import tr.metu.edu.sm.cookbook.entity.Recipe;
 
 public interface RecipeDao extends GenericDao<Recipe, Integer> {
 	
-	List<Recipe> searchRecipes(Recipe recipe);
 	List<Recipe> getRecipesByStatus(String status);
 	
 }

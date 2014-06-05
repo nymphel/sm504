@@ -1,5 +1,7 @@
 package tr.metu.edu.sm.cookbook.mbean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +20,22 @@ public class SearchBean {
 
 	@Autowired
 	private RecipeService<Recipe, Integer> service;
-	
+
 	private RecipeFilter filter;
 	
+	private List<Recipe> list;
+
 	@PostConstruct
-	private void init() 
-	{
+	private void init() {
 		setFilter(new RecipeFilter());
 	}
 
-	public void search() 
-	{
-		service.searchRecipes(getFilter());
+	public String search() {
+		list = service.searchRecipes(filter);
+		boolean advanced = filter.isAdvanced();
 		setFilter(new RecipeFilter());
+		filter.setAdvanced(advanced);
+		return "listrecipe";
 	}
 
 	public RecipeFilter getFilter() {
@@ -39,5 +44,20 @@ public class SearchBean {
 
 	public void setFilter(RecipeFilter filter) {
 		this.filter = filter;
+	}
+
+	public List<Recipe> getList() {
+		return list;
+	}
+
+	public void setList(List<Recipe> list) {
+		this.list = list;
+	}
+	
+	public String back() {
+		if(filter != null && filter.isAdvanced()) {
+			return "advancedsearch";
+		}
+		return "search";
 	}
 }

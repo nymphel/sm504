@@ -109,17 +109,17 @@
 										</p:inputText>
 									</p:column>
 								</p:row>
-								<p:row>
-									<p:column>
-										<p:outputLabel value="#{msg.advancedSearchMaxCalories}" />
-									</p:column>
-									<p:column>
-										<p:inputText id="maxCalories" styleClass="inputCommon"
-											value="#{searchBean.filter.maxcalories}" autocomplete="off">
-											<f:validateLength minimum="0" maximum="15" />
-										</p:inputText>
-									</p:column>
-								</p:row>
+<!-- 								<p:row> -->
+<!-- 									<p:column> -->
+<!-- 										<p:outputLabel value="#{msg.advancedSearchMaxCalories}" /> -->
+<!-- 									</p:column> -->
+<!-- 									<p:column> -->
+<!-- 										<p:inputText id="maxCalories" styleClass="inputCommon" -->
+<!-- 											value="#{searchBean.filter.maxcalories}" autocomplete="off"> -->
+<!-- 											<f:validateLength minimum="0" maximum="15" /> -->
+<!-- 										</p:inputText> -->
+<!-- 									</p:column> -->
+<!-- 								</p:row> -->
 							</p:panelGrid>
 						</p:column>
 					</p:row>
@@ -132,7 +132,9 @@
 							<p:column colspan="4">
 								<p:commandButton value="#{msg.advancedSearchSearch}"
 									action="#{searchBean.search}" process="@all"
-									update="advancedSearchForm" />
+									update="advancedSearchForm">
+									<f:setPropertyActionListener target="#{searchBean.filter.advanced}" value="#{true}" />
+								</p:commandButton>	
 								<p:commandButton value="#{msg.cancel}" action="index"
 									ajax="false" immediate="true" />
 							</p:column>

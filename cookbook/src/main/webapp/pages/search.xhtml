@@ -21,7 +21,9 @@
 						</p:column>
 						<p:column>
 							<p:commandButton value="#{msg.advancedSearchSearch}" style="width:140px"
-								action="#{searchBean.search}" process="@all" update="searchForm" />
+								action="#{searchBean.search}" process="@all" update="searchForm">
+									<f:setPropertyActionListener target="#{searchBean.filter.advanced}" value="#{false}" />
+								</p:commandButton>
 						</p:column>
 					</p:row>
 					<p:row>
