@@ -205,7 +205,7 @@
 						<p:column>
 							<p:fileUpload fileUploadListener="#{recipeBean.upload}" update="photo"
 								allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="1000000" />
-							<p:graphicImage id="photo" value="#{recipeBean.photo}" height="300px" width="300px"/>	
+							<p:graphicImage id="photo" value="#{recipeBean.photo}" height="300px" width="300px" cache="false"/>	
 						</p:column>
 					</p:row>
 
