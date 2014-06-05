@@ -79,8 +79,8 @@ public class RecipeBean {
 
 	@PostConstruct
 	private void init() {
-//		refreshRecipe();
-//		refreshRecipeIngredient();
+		refreshRecipe();
+		refreshRecipeIngredient();
 	}
 
 	private void refreshRecipe() {

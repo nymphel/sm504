@@ -60,3 +60,7 @@ body {
 .inputCommon {
 	width:180px !important;
 }
+
+.borderlessGrid tr, .borderlessGrid td {
+    border: none;
+}

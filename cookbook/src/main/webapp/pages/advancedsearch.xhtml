@@ -1,0 +1,148 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Welcome to CookBook</title>
+</h:head>
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="content">
+			<h:form id="advancedSearchForm">
+				<p:panelGrid>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="4">#{msg.advancedSearch}</p:column>
+						</p:row>
+					</f:facet>
+					<p:row>
+						<p:column>
+							<p:panelGrid>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchRecipeName}" />
+									</p:column>
+									<p:column>
+										<p:inputText id="recipeName" styleClass="inputCommon"
+											value="#{searchBean.filter.name}" autocomplete="off">
+											<f:validateLength minimum="2" maximum="15" />
+										</p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchIngredients}" />
+									</p:column>
+									<p:column>
+										<p:autoComplete id="ingredients" multiple="true"
+											value="#{searchBean.filter.ingredients}" style="width:180px"
+											completeMethod="#{recipeBean.complete}" var="ingredient"
+											forceSelection="true" itemLabel="#{ingredient.name}"
+											itemValue="#{ingredient.name}" />
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<p:outputLabel
+											value="#{msg.advancedSearchExcludedIngredients}" />
+									</p:column>
+									<p:column>
+										<p:autoComplete id="excludedingredients" multiple="true"
+											value="#{searchBean.filter.excludedingredients}"
+											completeMethod="#{recipeBean.complete}" var="ingredient"
+											forceSelection="true" itemLabel="#{ingredient.name}"
+											itemValue="#{ingredient.name}" />
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchCategories}" />
+									</p:column>
+									<p:column>
+										<p:selectOneListbox id="categories"
+											value="#{searchBean.filter.categoryid}">
+											<f:selectItems value="#{categoryBean.all}" var="category"
+												itemLabel="#{category.name}" itemValue="#{category.id}" />
+										</p:selectOneListbox>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:column>
+						<p:column>
+							<p:panelGrid>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchCuisineTypes}" />
+									</p:column>
+									<p:column>
+										<p:selectOneListbox id="cuisineTypes"
+											value="#{searchBean.filter.cuisinetypeid}">
+											<f:selectItems value="#{cuisineBean.all}" var="cuisinetype"
+												itemLabel="#{cuisinetype.name}"
+												itemValue="#{cuisinetype.id}" />
+										</p:selectOneListbox>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchCookingMethods}" />
+									</p:column>
+									<p:column>
+										<p:selectOneListbox id="cookingMethods"
+											value="#{searchBean.filter.cookingmethodid}">
+											<f:selectItems value="#{cookingmethodBean.all}"
+												var="cookingmethod" itemLabel="#{cookingmethod.name}"
+												itemValue="#{cookingmethod.id}" />
+										</p:selectOneListbox>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchMaxCookingTime}" />
+									</p:column>
+									<p:column>
+										<p:inputText id="maxCookingTime" styleClass="inputCommon"
+											value="#{searchBean.filter.maxcookingtime}"
+											autocomplete="off">
+											<f:validateLength minimum="0" maximum="15" />
+										</p:inputText>
+									</p:column>
+								</p:row>
+								<p:row>
+									<p:column>
+										<p:outputLabel value="#{msg.advancedSearchMaxCalories}" />
+									</p:column>
+									<p:column>
+										<p:inputText id="maxCalories" styleClass="inputCommon"
+											value="#{searchBean.filter.maxcalories}" autocomplete="off">
+											<f:validateLength minimum="0" maximum="15" />
+										</p:inputText>
+									</p:column>
+								</p:row>
+							</p:panelGrid>
+						</p:column>
+					</p:row>
+
+					<f:facet name="footer">
+						<p:row>
+							<p:column>
+
+							</p:column>
+							<p:column colspan="4">
+								<p:commandButton value="#{msg.advancedSearchSearch}"
+									action="#{searchBean.search}" process="@all"
+									update="advancedSearchForm" />
+								<p:commandButton value="#{msg.cancel}" action="index"
+									ajax="false" immediate="true" />
+							</p:column>
+						</p:row>
+					</f:facet>
+
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>

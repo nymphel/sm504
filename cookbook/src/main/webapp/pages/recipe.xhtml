@@ -24,7 +24,7 @@
 						<p:column>
 							<p:inputText id="recipeName" styleClass="inputCommon"
 								required="true" requiredMessage="#{msg.required}"
-								value="#{recipeBean.recipe.name}" autocomplete="false">
+								value="#{recipeBean.recipe.name}" autocomplete="off">
 								<f:validateLength minimum="2" maximum="15" />
 							</p:inputText>
 						</p:column>
@@ -90,7 +90,7 @@
 						</p:column>
 						<p:column>
 							<p:inputText value="#{recipeBean.recipe.cookingTime}"
-								required="true" styleClass="inputCommon" />
+								required="true" styleClass="inputCommon" autocomplete="off"/>
 							<p:spacer width="3px" />
 							<h:outputText value="minutes"/>	
 						</p:column>
@@ -102,7 +102,7 @@
 						</p:column>
 						<p:column>
 							<p:inputText value="#{recipeBean.recipe.prepTime}"
-								required="true" styleClass="inputCommon" />
+								required="true" styleClass="inputCommon" autocomplete="off" />
 							<p:spacer width="3px" />
 							<h:outputText value="minutes"/>	
 						</p:column>
@@ -114,7 +114,7 @@
 						</p:column>
 						<p:column>
 							<p:inputText value="#{recipeBean.recipe.servingQty}"
-								required="true" styleClass="inputCommon" />
+								required="true" styleClass="inputCommon" autocomplete="off"/>
 						</p:column>
 					</p:row>
 					
@@ -135,9 +135,9 @@
 						</p:column>
 						<p:column>
 
-							<p:panelGrid columns="5" id="ingredientGrid">
+							<p:panelGrid columns="5" id="ingredientGrid" styleClass="borderlessGrid">
 								<p:inputText value="#{recipeBean.recipeingredient.number}"
-									style="width:50px" />
+									style="width:50px" autocomplete="off"/>
 								<p:selectOneMenu value="#{recipeBean.recipeingredient.unit.id}">
 									<f:selectItems value="#{unitBean.all}" var="unit"
 										itemLabel="#{unit.name}" itemValue="#{unit.id}" />
