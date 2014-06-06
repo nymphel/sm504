@@ -61,17 +61,17 @@ public class RecipeServiceImpl extends
 					if(!name.contains(filtername)) {
 						continue;
 					}
-				} else if(excludedingredients != null && !excludedingredients.isEmpty()) {
-					int count = findIngredient(excludedingredients, recipe.getRecipeingredientList());
-					if(count > 0) {
-						continue;
-					}
 				} else if(ingredients != null && !ingredients.isEmpty()) {
 					int count = findIngredient(ingredients, recipe.getRecipeingredientList());
 					if(count != ingredients.size()) {
 						continue;
 					}
-				} 
+				} else if(excludedingredients != null && !excludedingredients.isEmpty()) {
+					int count = findIngredient(excludedingredients, recipe.getRecipeingredientList());
+					if(count > 0) {
+						continue;
+					}
+				}  
 				
 				searchResults.add(recipe);
 			}
